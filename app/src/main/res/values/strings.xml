@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Recruiter</string>
     <string name="recruit">Recruit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="finalist">Finalist</string>
+    <string name="are_you_a_finalist_looking_for_your_dream_job_apply_to_create_a_unique_career_profile">Are you a Finalist looking for your dream job? Apply to create a unique career profile.</string>
+    <string name="apply">Apply</string>
+    <string name="are_you_an_employer_looking_to_hire_graduates_with_proficient_skills">Are you an Employer looking to hire Graduates with proficient skills?</string>
+    <string name="hire">Hire</string>
 </resources>
