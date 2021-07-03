@@ -8,4 +8,29 @@
     <string name="apply">Apply</string>
     <string name="are_you_an_employer_looking_to_hire_graduates_with_proficient_skills">Are you an Employer looking to hire Graduates with proficient skills?</string>
     <string name="hire">Hire</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="lo_gin">Login</string>
+    <string name="email_address">Email address</string>
+    <string name="_password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="are_you_a_new_user">Are you a new user?</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="createaccount">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_addres">Email Address</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Register</string>
+
+
+    <string-array name="spinner_entries">
+        <item>I am a</item>
+        <item>Front-end Developer</item>
+        <item>Back-end Developer</item>
+        <item>Full Stack Developer</item>
+        <item>Mobile Developer</item>
+        <item>UI/UX Developer</item>
+    </string-array>
 </resources>
