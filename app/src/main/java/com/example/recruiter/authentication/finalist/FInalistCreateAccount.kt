@@ -52,9 +52,11 @@ class SignInFragment : Fragment() {
 
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
+                    binding.progressbar.isVisible = false
                     Toast.makeText(requireContext(), "user created succesfully", Toast.LENGTH_SHORT).show()
                 }
                 else{
+                    binding.progressbar.isVisible = false
                     Toast.makeText(requireContext(), "Failed to register", Toast.LENGTH_SHORT).show()
                 }
             }
