@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "526123327215",
+    "project_id": "recruiter-62a3c",
+    "storage_bucket": "recruiter-62a3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526123327215:android:3268ef5123be2c4d98c51a",
+        "android_client_info": {
+          "package_name": "com.example.recruiter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526123327215-35uliqian3utdo5o3ft17s3lre4hdm0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV1aHSp9XPk3j8lNf9HVAFktfAeWvQdAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526123327215-35uliqian3utdo5o3ft17s3lre4hdm0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -22,10 +22,30 @@
         <action
             android:id="@+id/action_signUpCategory_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signUpCategory_to_employerOnboarding"
+            app:destination="@id/employerOnboarding" />
+        <action
+            android:id="@+id/action_signUpCategory_to_finalistOnboarding"
+            app:destination="@id/finalistOnboarding" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.recruiter.authentication.SignUpFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signUpCategory"
+            app:destination="@id/signUpCategory" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalistOnboarding"
+        android:name="com.example.recruiter.authentication.finalist.FinalistOnboarding"
+        android:label="fragment_finalist_onboarding"
+        tools:layout="@layout/fragment_finalist_onboarding" />
+    <fragment
+        android:id="@+id/employerOnboarding"
+        android:name="com.example.recruiter.authentication.employer.EmployerOnboarding"
+        android:label="fragment_employer_onboarding"
+        tools:layout="@layout/fragment_employer_onboarding" />
 </navigation>
