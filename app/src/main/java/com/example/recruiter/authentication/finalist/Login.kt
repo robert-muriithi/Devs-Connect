@@ -22,19 +22,19 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater,container,false)
+        binding = FragmentLoginBinding.inflate(inflater , container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
 
         binding.loginBtn.setOnClickListener {
-            val email = binding.email.editText?.text.toString().trim()
-            val password = binding.password.editText?.text.toString().trim()
+            val email = binding.loginEmail.editText?.text.toString().trim()
+            val password = binding.loginPassword.editText?.text.toString().trim()
 
             if (TextUtils.isEmpty(email)){
-                binding.email.error = ""
+                binding.loginEmail.error = ""
             }
             else if (TextUtils.isEmpty(password)){
-                binding.password.error = ""
+                binding.loginPassword.error = ""
             }
             else{
                 binding.progressBar.isVisible = true

@@ -23,6 +23,12 @@ class SignUpCategory : Fragment() {
         binding.login.setOnClickListener {
             findNavController().navigate(R.id.action_signUpCategory_to_signUpFragment)
         }
+        binding.finalistApply.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpCategory_to_finalistOnboarding)
+        }
+        binding.employerHire.setOnClickListener{
+            findNavController().navigate(R.id.action_signUpCategory_to_employerOnboarding)
+        }
 
         return view
     }

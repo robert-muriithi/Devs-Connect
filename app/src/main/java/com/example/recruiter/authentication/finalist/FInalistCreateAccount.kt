@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentFinalistCreateAccountBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -24,24 +25,32 @@ class SignInFragment : Fragment() {
         binding = FragmentFinalistCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
+        binding.return2Login.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
 
-        binding.register.setOnClickListener {
-            val full_name = binding.fullName.editText?.text.toString().trim()
-            val email = binding.email.editText?.text.toString().trim()
-            val password = binding.password.editText?.text.toString().trim()
-            val confirm_pass = binding.confirmPassword.editText?.text.toString().trim()
+        }
+
+        binding.registerBtn.setOnClickListener {
+            val full_name = binding.finalistFullName.editText?.text.toString().trim()
+            val email = binding.finalistEmail.editText?.text.toString().trim()
+            val phoneNumber = binding.finalistPhoneNumber.editText?.text.toString().trim()
+            val password = binding.finalistPassword.editText?.text.toString().trim()
+            val confirm_pass = binding.finalistConfirmPassword.editText?.text.toString().trim()
 
             if (TextUtils.isEmpty(full_name)){
-                binding.fullName.error = "Required"
+                binding.finalistFullName.error = "Required"
             }
             else if (TextUtils.isEmpty(email)){
-                binding.email.error = "Required"
+                binding.finalistEmail.error = "Required"
+            }
+            else if (TextUtils.isEmpty(phoneNumber)){
+                binding.finalistPhoneNumber.error = "required"
             }
             else if (TextUtils.isEmpty(password)){
-                binding.password.error = "Required"
+                binding.finalistPassword.error = "Required"
             }
             else if (TextUtils.isEmpty(confirm_pass)){
-                binding.confirmPassword.error = "Required"
+                binding.finalistConfirmPassword.error = "Required"
             }
             else if (!(password == confirm_pass)){
                 Toast.makeText(requireContext(), "Password mismatch", Toast.LENGTH_SHORT).show()

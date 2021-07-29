@@ -42,10 +42,60 @@
         android:id="@+id/finalistOnboarding"
         android:name="com.example.recruiter.authentication.finalist.FinalistOnboarding"
         android:label="fragment_finalist_onboarding"
-        tools:layout="@layout/fragment_finalist_onboarding" />
+        tools:layout="@layout/fragment_finalist_onboarding" >
+        <action
+            android:id="@+id/action_finalistOnboarding_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/employerOnboarding"
         android:name="com.example.recruiter.authentication.employer.EmployerOnboarding"
         android:label="fragment_employer_onboarding"
-        tools:layout="@layout/fragment_employer_onboarding" />
+        tools:layout="@layout/fragment_employer_onboarding" >
+        <action
+            android:id="@+id/action_employerOnboarding_to_employerCreateAccount"
+            app:destination="@id/employerCreateAccount" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.recruiter.authentication.SignInFragment"
+        android:label="fragment_finalist_create_account"
+        tools:layout="@layout/fragment_finalist_create_account" >
+        <action
+            android:id="@+id/action_signInFragment_to_verifyAccount"
+            app:destination="@id/verifyAccount" />
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employerCreateAccount"
+        android:name="com.example.recruiter.authentication.employer.EmployerCreateAccount"
+        android:label="fragment_employer_create_account"
+        tools:layout="@layout/fragment_employer_create_account" >
+        <action
+            android:id="@+id/action_employerCreateAccount_to_companyInformation"
+            app:destination="@id/companyInformation" />
+        <action
+            android:id="@+id/action_employerCreateAccount_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyInformation"
+        android:name="com.example.recruiter.authentication.employer.CompanyInformation"
+        android:label="fragment_company_information"
+        tools:layout="@layout/fragment_company_information" >
+        <action
+            android:id="@+id/action_companyInformation_to_verifyAccount"
+            app:destination="@id/verifyAccount" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyAccount"
+        android:name="com.example.recruiter.verification.VerifyAccount"
+        android:label="fragment_verify_account"
+        tools:layout="@layout/fragment_verify_account" >
+        <action
+            android:id="@+id/action_verifyAccount_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
 </navigation>
