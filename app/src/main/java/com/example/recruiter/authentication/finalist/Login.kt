@@ -26,15 +26,19 @@ class SignUpFragment : Fragment() {
         val view = binding.root
         auth = FirebaseAuth.getInstance()
 
+        binding.forgotPassword.setOnClickListener {
+
+        }
+
         binding.loginBtn.setOnClickListener {
             val email = binding.loginEmail.editText?.text.toString().trim()
             val password = binding.loginPassword.editText?.text.toString().trim()
 
             if (TextUtils.isEmpty(email)){
-                binding.loginEmail.error = ""
+                return@setOnClickListener
             }
             else if (TextUtils.isEmpty(password)){
-                binding.loginPassword.error = ""
+                return@setOnClickListener
             }
             else{
                 binding.progressBar.isVisible = true

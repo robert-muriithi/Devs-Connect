@@ -38,19 +38,19 @@ class SignInFragment : Fragment() {
             val confirm_pass = binding.finalistConfirmPassword.editText?.text.toString().trim()
 
             if (TextUtils.isEmpty(full_name)){
-                binding.finalistFullName.error = "Required"
+                return@setOnClickListener
             }
             else if (TextUtils.isEmpty(email)){
-                binding.finalistEmail.error = "Required"
+                return@setOnClickListener
             }
             else if (TextUtils.isEmpty(phoneNumber)){
-                binding.finalistPhoneNumber.error = "required"
+                return@setOnClickListener
             }
             else if (TextUtils.isEmpty(password)){
-                binding.finalistPassword.error = "Required"
+                return@setOnClickListener
             }
             else if (TextUtils.isEmpty(confirm_pass)){
-                binding.finalistConfirmPassword.error = "Required"
+                return@setOnClickListener
             }
             else if (!(password == confirm_pass)){
                 Toast.makeText(requireContext(), "Password mismatch", Toast.LENGTH_SHORT).show()
