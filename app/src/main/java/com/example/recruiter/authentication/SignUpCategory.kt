@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentSignUpCategoryBinding
@@ -21,7 +22,8 @@ class SignUpCategory : Fragment() {
         val view = binding.root
 
         binding.login.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpCategory_to_signUpFragment)
+            Toast.makeText(requireContext(), "Login", Toast.LENGTH_SHORT).show()
+           findNavController().navigate(R.id.action_signUpCategory_to_loginFragment)
         }
         binding.finalistApply.setOnClickListener {
             findNavController().navigate(R.id.action_signUpCategory_to_finalistOnboarding)

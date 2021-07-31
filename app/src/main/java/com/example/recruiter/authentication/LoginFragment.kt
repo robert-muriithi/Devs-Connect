@@ -8,26 +8,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
+import com.example.recruiter.others.CustomDialog
+import com.example.recruiter.others.CustomDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 
 
-class SignUpFragment : Fragment() {
+class LoginFragment : Fragment() {
+
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var auth: FirebaseAuth
+    private  lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater , container, false)
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
+
+
         auth = FirebaseAuth.getInstance()
 
         binding.forgotPassword.setOnClickListener {
-
+            CustomDialogFragment().show(requireActivity().supportFragmentManager,"CustomDialog")
         }
 
         binding.loginBtn.setOnClickListener {
@@ -55,6 +59,10 @@ class SignUpFragment : Fragment() {
                 }
             }
         }
+
+
+
+
 
 
         return view

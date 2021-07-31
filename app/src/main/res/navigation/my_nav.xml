@@ -20,23 +20,14 @@
         android:label="fragment_sign_up_category"
         tools:layout="@layout/fragment_sign_up_category" >
         <action
-            android:id="@+id/action_signUpCategory_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
             android:id="@+id/action_signUpCategory_to_employerOnboarding"
             app:destination="@id/employerOnboarding" />
         <action
             android:id="@+id/action_signUpCategory_to_finalistOnboarding"
             app:destination="@id/finalistOnboarding" />
-    </fragment>
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.example.recruiter.authentication.SignUpFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_signUpFragment_to_signUpCategory"
-            app:destination="@id/signUpCategory" />
+            android:id="@+id/action_signUpCategory_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/finalistOnboarding"
@@ -65,8 +56,8 @@
             android:id="@+id/action_signInFragment_to_verifyAccount"
             app:destination="@id/verifyAccount" />
         <action
-            android:id="@+id/action_signInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_signInFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/employerCreateAccount"
@@ -77,8 +68,8 @@
             android:id="@+id/action_employerCreateAccount_to_companyInformation"
             app:destination="@id/companyInformation" />
         <action
-            android:id="@+id/action_employerCreateAccount_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_employerCreateAccount_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/companyInformation"
@@ -95,7 +86,12 @@
         android:label="fragment_verify_account"
         tools:layout="@layout/fragment_verify_account" >
         <action
-            android:id="@+id/action_verifyAccount_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_verifyAccount_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.recruiter.authentication.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

@@ -26,7 +26,7 @@ class SignInFragment : Fragment() {
         val view = binding.root
         auth = FirebaseAuth.getInstance()
         binding.return2Login.setOnClickListener {
-            findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
+            findNavController().navigate(R.id.action_signInFragment_to_loginFragment)
 
         }
 

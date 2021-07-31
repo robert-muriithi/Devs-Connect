@@ -22,7 +22,7 @@ class VerifyAccount : Fragment() {
         val view = binding.root
 
         binding.verify.setOnClickListener {
-            findNavController().navigate(R.id.action_verifyAccount_to_signUpFragment)
+            findNavController().navigate(R.id.action_verifyAccount_to_loginFragment)
         }
 
 

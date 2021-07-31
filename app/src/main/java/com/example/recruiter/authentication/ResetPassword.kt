@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentResetPasswordBinding
+import com.example.recruiter.others.CustomDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.installations.Utils
 import java.util.regex.Pattern
@@ -36,9 +37,13 @@ class ResetPassword : DialogFragment() {
                 return@setOnClickListener
             }
 
+
             auth.sendPasswordResetEmail(mail).addOnCompleteListener {
                 if (it.isSuccessful){
-                    Toast.makeText(requireContext(), "Check your Email for reset link", Toast.LENGTH_SHORT).show()
+
+                    val alert = CustomDialog()
+                    alert.showResetPasswordDialog(activity)
+                    //Toast.makeText(requireContext(), "Check your Email for reset link", Toast.LENGTH_SHORT).show()
                 }
                 else{
                     Toast.makeText(requireContext(), "Email does not exist", Toast.LENGTH_SHORT).show()

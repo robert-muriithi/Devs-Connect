@@ -24,7 +24,7 @@ class EmployerCreateAccount : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         binding.returnToLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_employerCreateAccount_to_signUpFragment)
+            findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
         }
 
         binding.next.setOnClickListener {
