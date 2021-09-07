@@ -1,4 +1,4 @@
-package com.example.recruiter.authentication
+package com.example.recruiter.ui
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentFinalistCreateAccountBinding

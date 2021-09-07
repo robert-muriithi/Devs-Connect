@@ -1,4 +1,4 @@
-package com.example.recruiter.verification
+package com.example.recruiter.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

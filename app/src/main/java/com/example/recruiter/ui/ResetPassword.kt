@@ -1,21 +1,16 @@
-package com.example.recruiter.authentication
+package com.example.recruiter.ui
 
 import android.os.Bundle
-import android.os.PatternMatcher
 import android.text.TextUtils
 import android.util.Patterns.*
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentResetPasswordBinding
 import com.example.recruiter.others.CustomDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.installations.Utils
-import java.util.regex.Pattern
 
 class ResetPassword : DialogFragment() {
 
@@ -32,8 +27,9 @@ class ResetPassword : DialogFragment() {
 
         val mail = binding.emailReset.editText?.text.toString().trim()
 
-        binding.emailReset.setOnClickListener {
+        binding.resetPasswordBtn.setOnClickListener {
             if (TextUtils.isEmpty(mail)){
+                binding.emailReset.error = "required"
                 return@setOnClickListener
             }
 
@@ -43,7 +39,6 @@ class ResetPassword : DialogFragment() {
 
                     val alert = CustomDialog()
                     alert.showResetPasswordDialog(activity)
-                    //Toast.makeText(requireContext(), "Check your Email for reset link", Toast.LENGTH_SHORT).show()
                 }
                 else{
                     Toast.makeText(requireContext(), "Email does not exist", Toast.LENGTH_SHORT).show()

@@ -1,7 +1,8 @@
-package com.example.recruiter
+package com.example.recruiter.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.recruiter.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

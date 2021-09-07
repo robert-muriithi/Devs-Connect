@@ -1,12 +1,10 @@
-package com.example.recruiter.splash
+package com.example.recruiter.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.recruiter.MainActivity
 import com.example.recruiter.R
-import com.example.recruiter.onboarding.ViewPagerFragment
 
 class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

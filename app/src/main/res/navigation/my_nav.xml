@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpCategory"
-        android:name="com.example.recruiter.authentication.SignUpCategory"
+        android:name="com.example.recruiter.ui.SignUpCategory"
         android:label="fragment_sign_up_category"
         tools:layout="@layout/fragment_sign_up_category" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/finalistOnboarding"
-        android:name="com.example.recruiter.authentication.finalist.FinalistOnboarding"
+        android:name="com.example.recruiter.ui.FinalistOnboarding"
         android:label="fragment_finalist_onboarding"
         tools:layout="@layout/fragment_finalist_onboarding" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/employerOnboarding"
-        android:name="com.example.recruiter.authentication.employer.EmployerOnboarding"
+        android:name="com.example.recruiter.ui.EmployerOnboarding"
         android:label="fragment_employer_onboarding"
         tools:layout="@layout/fragment_employer_onboarding" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.recruiter.authentication.SignInFragment"
+        android:name="com.example.recruiter.ui.SignInFragment"
         android:label="fragment_finalist_create_account"
         tools:layout="@layout/fragment_finalist_create_account" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/employerCreateAccount"
-        android:name="com.example.recruiter.authentication.employer.EmployerCreateAccount"
+        android:name="com.example.recruiter.ui.EmployerCreateAccount"
         android:label="fragment_employer_create_account"
         tools:layout="@layout/fragment_employer_create_account" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/companyInformation"
-        android:name="com.example.recruiter.authentication.employer.CompanyInformation"
+        android:name="com.example.recruiter.ui.CompanyInformation"
         android:label="fragment_company_information"
         tools:layout="@layout/fragment_company_information" >
         <action
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/verifyAccount"
-        android:name="com.example.recruiter.verification.VerifyAccount"
+        android:name="com.example.recruiter.ui.VerifyAccount"
         android:label="fragment_verify_account"
         tools:layout="@layout/fragment_verify_account" >
         <action
@@ -91,7 +91,41 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.recruiter.authentication.LoginFragment"
+        android:name="com.example.recruiter.ui.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_finalistHomeFragment"
+            app:destination="@id/finalistHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_employerHomeFragment"
+            app:destination="@id/employerHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employerHomeFragment"
+        android:name="com.example.recruiter.ui.EmployerHomeFragment"
+        android:label="EmployerHomeFragment" >
+        <action
+            android:id="@+id/action_employerHomeFragment_to_employerMarketPlaceFragment"
+            app:destination="@id/employerMarketPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalistHomeFragment"
+        android:name="com.example.recruiter.ui.FinalistHomeFragment"
+        android:label="fragment_finalist_home"
+        tools:layout="@layout/fragment_finalist_home" >
+        <action
+            android:id="@+id/action_finalistHomeFragment_to_finalistMarketPlaceFragment"
+            app:destination="@id/finalistMarketPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employerMarketPlaceFragment"
+        android:name="com.example.recruiter.ui.EmployerMarketPlaceFragment"
+        android:label="fragment_employer_market_place"
+        tools:layout="@layout/fragment_employer_market_place" />
+    <fragment
+        android:id="@+id/finalistMarketPlaceFragment"
+        android:name="com.example.recruiter.ui.FinalistMarketPlaceFragment"
+        android:label="fragment_finalist_market_place"
+        tools:layout="@layout/fragment_finalist_market_place" />
 </navigation>

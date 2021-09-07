@@ -1,4 +1,4 @@
-package com.example.recruiter.authentication
+package com.example.recruiter.ui
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
-import com.example.recruiter.others.CustomDialog
 import com.example.recruiter.others.CustomDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,6 +17,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private  lateinit var auth: FirebaseAuth
+   // private lateinit var databaseReference: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +51,7 @@ class LoginFragment : Fragment() {
                 if (it.isSuccessful){
                     binding.progressBar.isVisible = false
                     Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
-                    //findNavController().navigate(R.id.ac)
+                    checkUserType()
                 }else{
                     binding.progressBar.isVisible = false
                     Toast.makeText(requireContext(), "Check credentials and try again", Toast.LENGTH_SHORT).show()
@@ -66,6 +65,10 @@ class LoginFragment : Fragment() {
 
 
         return view
+    }
+
+    private fun checkUserType() {
+
     }
 
 }

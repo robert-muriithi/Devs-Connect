@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.employer.EmployerCreateAccount">
+    tools:context=".ui.EmployerCreateAccount">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,13 +17,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/materialTextView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/create_account"
             android:textColor="@color/midnightBlue"
@@ -55,15 +54,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/workPlaceEmail"
-            android:hint="@string/workplace_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:hint="@string/workplace_email"
             android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/employer_full_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            app:layout_constraintTop_toBottomOf="@+id/employer_full_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -78,11 +77,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textColorHint="@color/black"
             android:hint="@string/phone_number"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/workPlaceEmail" >
+            app:layout_constraintTop_toBottomOf="@+id/workPlaceEmail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -93,16 +92,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/position"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:hint="@string/position_in_company"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Employer_phonenumber"
-            android:textColorHint="@color/black"
-            android:hint="@string/position_in_company"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/Employer_phonenumber">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -116,8 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textColorHint="@color/black"
             android:hint="@string/password"
+            android:textColorHint="@color/black"
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,17 +135,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:hint="@string/confirm_password"
+            android:textColorHint="@color/black"
+            app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/employer_password"
-            app:endIconMode="password_toggle"
-            android:textColorHint="@color/black"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/employer_password">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="casual"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

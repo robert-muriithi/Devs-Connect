@@ -8,18 +8,27 @@
         <entry key="app/src/main/res/drawable/ic_microsoft.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/mail_big.xml" value="0.190625" />
+        <entry key="app/src/main/res/font/cabin_medium_italic.xml" value="0.2078125" />
+        <entry key="app/src/main/res/font/font.xml" value="0.2078125" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/book_marked_contacts_recycler_layout.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/custom_reset_success.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/finalist_home_recycler_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/finalist_home_recycler_view.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/fragment_company_information.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/layout/fragment_custom_dialog.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_employer_create_account.xml" value="0.17552083333333332" />
-        <entry key="app/src/main/res/layout/fragment_employer_home.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/fragment_employer_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_employer_market_place.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_employer_onboarding.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/fragment_finalist_create_account.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_finalist_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_finalist_market_place.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_reset_password.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/market_place_recycler_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/market_place_recycler_layout.xml" value="0.16" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.17604166666666668" />
       </map>
     </option>

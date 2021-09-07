@@ -1,4 +1,4 @@
-package com.example.recruiter.authentication
+package com.example.recruiter.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
