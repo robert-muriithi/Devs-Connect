@@ -32,7 +32,6 @@ class EmployerCreateAccount : Fragment() {
         val view = binding.root
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("all_details")
-        val empl = Employer()
 
         binding.returnToLogin.setOnClickListener {
             findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)

@@ -20,9 +20,9 @@ class CompanyInformation : Fragment() {
         val view = binding.root
 
 
-        binding.createAccount.setOnClickListener {
+      /*  binding.createAccount.setOnClickListener {
             findNavController().navigate(R.id.action_companyInformation_to_verifyAccount)
-        }
+        }*/
 
         return view
     }

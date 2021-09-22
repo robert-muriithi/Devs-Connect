@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.recruiter.databinding.BookMarkedContactsRecyclerLayoutBinding
 import com.example.recruiter.model.BookmarkedContacts
 
@@ -30,9 +31,9 @@ class BookmarkedContactsRecyclerAdapter : ListAdapter<BookmarkedContacts,Bookmar
         fun bind(items: BookmarkedContacts?) {
             binding.name.text = items?.name
             binding.speciality.text = items?.speciality
-            /*Glide.with(binding.circleImageView)
+            Glide.with(binding.circleImageView)
                 .load(items?.image)
-                .into(binding.circleImageView)*/
+                .into(binding.circleImageView)
         }
 
     }
