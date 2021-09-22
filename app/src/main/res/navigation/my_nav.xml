@@ -65,20 +65,8 @@
         android:label="fragment_employer_create_account"
         tools:layout="@layout/fragment_employer_create_account" >
         <action
-            android:id="@+id/action_employerCreateAccount_to_companyInformation"
-            app:destination="@id/companyInformation" />
-        <action
             android:id="@+id/action_employerCreateAccount_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/companyInformation"
-        android:name="com.example.recruiter.ui.CompanyInformation"
-        android:label="fragment_company_information"
-        tools:layout="@layout/fragment_company_information" >
-        <action
-            android:id="@+id/action_companyInformation_to_verifyAccount"
-            app:destination="@id/verifyAccount" />
     </fragment>
     <fragment
         android:id="@+id/verifyAccount"
@@ -100,6 +88,9 @@
         <action
             android:id="@+id/action_loginFragment_to_employerHomeFragment"
             app:destination="@id/employerHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpCategory"
+            app:destination="@id/signUpCategory" />
     </fragment>
     <fragment
         android:id="@+id/employerHomeFragment"

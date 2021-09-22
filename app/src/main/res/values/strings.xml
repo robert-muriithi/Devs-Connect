@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Recruiter</string>
-    <string name="recruit">Recruit</string>
+    <string name="app_name">DevsConnect</string>
+    <string name="recruit">DevsConnect</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="finalist">Finalist</string>
@@ -57,5 +57,10 @@
         <item>Full Stack Developer</item>
         <item>Mobile Developer</item>
         <item>UI/UX Developer</item>
+    </string-array>
+
+    <string-array name="login_type">
+        <item>Employer</item>
+        <item>Developer</item>
     </string-array>
 </resources>

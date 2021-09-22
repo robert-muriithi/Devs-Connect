@@ -7,15 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentEmployerCreateAccountBinding
+import com.example.recruiter.model.Employer
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class EmployerCreateAccount : Fragment() {
     private lateinit var binding: FragmentEmployerCreateAccountBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var databaseReference: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,16 +31,18 @@ class EmployerCreateAccount : Fragment() {
         binding = FragmentEmployerCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
+        databaseReference = FirebaseDatabase.getInstance().getReference("all_details")
+        val empl = Employer()
 
         binding.returnToLogin.setOnClickListener {
             findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
         }
 
-        binding.next.setOnClickListener {
+        binding.create.setOnClickListener {
 
            // findNavController().navigate(R.id.action_employerCreateAccount_to_companyInformation)
             val fullName = binding.employerFullName.editText?.text.toString().trim()
-            val workEmail = binding.workPlaceEmail.editText?.text.toString().trim()
+            val email = binding.emailAddress.editText?.text.toString().trim()
             val phoneNumber = binding.EmployerPhonenumber.editText?.text.toString().trim()
             val position = binding.position.editText?.text.toString().trim()
             val password = binding.employerPassword.editText?.text.toString().trim()
@@ -42,8 +51,8 @@ class EmployerCreateAccount : Fragment() {
             if (TextUtils.isEmpty(fullName)){
                 binding.employerFullName.error = "required"
                 //return@setOnClickListener
-            }else if (TextUtils.isEmpty(workEmail)){
-                binding.workPlaceEmail.error = "required"
+            }else if (TextUtils.isEmpty(email)){
+                binding.emailAddress.error = "required"
                     //return@setOnClickListener
                 }
             else if (TextUtils.isEmpty(phoneNumber)){
@@ -62,13 +71,22 @@ class EmployerCreateAccount : Fragment() {
             }
             else if (!password.equals(confirmPassword)){
                 Toast.makeText(requireContext(), "Password does not match", Toast.LENGTH_SHORT).show()
+            }else
+                binding.progressBar2.isVisible = true
+            auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
+                if (it.isSuccessful){
+                    binding.progressBar2.isVisible = false
+                    val employer = Employer(fullName,email,phoneNumber,position)
+                    databaseReference.push().setValue(employer)
+
+
+                }
             }
+
         }
-
-
-
 
         return view
     }
+
 
 }

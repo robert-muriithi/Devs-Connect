@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
 import com.example.recruiter.others.CustomDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -26,8 +28,10 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
-
         auth = FirebaseAuth.getInstance()
+       binding.createAccount.setOnClickListener {
+           findNavController().navigate(R.id.action_loginFragment_to_signUpCategory)
+       }
 
         binding.forgotPassword.setOnClickListener {
             CustomDialogFragment().show(requireActivity().supportFragmentManager,"CustomDialog")
@@ -49,9 +53,17 @@ class LoginFragment : Fragment() {
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
-                    binding.progressBar.isVisible = false
-                    Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
-                    checkUserType()
+                    val userType = binding.usertypeSpinner.selectedItem.toString()
+                    if (userType == "Employer"){
+                        binding.progressBar.isVisible = false
+                        //Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
+                    }
+                    if (userType == "Developer"){
+                        binding.progressBar.isVisible = false
+                        findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
+                    }
+
                 }else{
                     binding.progressBar.isVisible = false
                     Toast.makeText(requireContext(), "Check credentials and try again", Toast.LENGTH_SHORT).show()
@@ -67,8 +79,5 @@ class LoginFragment : Fragment() {
         return view
     }
 
-    private fun checkUserType() {
-
-    }
 
 }
