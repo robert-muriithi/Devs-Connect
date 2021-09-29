@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recruiter.databinding.MarketPlaceRecyclerLayoutBinding
+import com.example.recruiter.databinding.EmployerMarketPlaceRecyclerLayoutBinding
 import com.example.recruiter.model.EmpMarketPlace
 
 class EmpMarketPlaceRecyclerAdapter : ListAdapter<EmpMarketPlace, EmpMarketPlaceRecyclerAdapter.MyViewHolder>(myDiffUtil){
-    inner class MyViewHolder(private var binding: MarketPlaceRecyclerLayoutBinding) :
+    inner class MyViewHolder(private var binding: EmployerMarketPlaceRecyclerLayoutBinding) :
     RecyclerView.ViewHolder(binding.root){
         fun bind(items: EmpMarketPlace?) {
             binding.cat.text = items?.category
@@ -30,7 +30,7 @@ class EmpMarketPlaceRecyclerAdapter : ListAdapter<EmpMarketPlace, EmpMarketPlace
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(MarketPlaceRecyclerLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return MyViewHolder(EmployerMarketPlaceRecyclerLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

@@ -156,7 +156,7 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
-            android:text="@string/create_account"
+            android:text="@string/next"
             android:textAllCaps="false"
             app:backgroundTint="@color/midnightBlue"
             app:cornerRadius="10dp"
@@ -194,7 +194,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/next"
+            app:layout_constraintBottom_toBottomOf="@+id/create"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

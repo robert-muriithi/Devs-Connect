@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <androidx.recyclerview.widget.RecyclerView
-            tools:listitem="@layout/market_place_recycler_layout"
+            tools:listitem="@layout/employer_market_place_recycler_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

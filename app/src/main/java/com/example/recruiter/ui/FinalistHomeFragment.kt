@@ -14,7 +14,7 @@ import com.example.recruiter.databinding.FragmentFinalistHomeBinding
 
 class FinalistHomeFragment : Fragment() {
 private lateinit var binding: FragmentFinalistHomeBinding
-    private val PICK_IMAGE = 100
+    private val PICK_IMAGE = 1
     var imageUri: Uri? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +37,10 @@ private lateinit var binding: FragmentFinalistHomeBinding
         startActivityForResult(gallery,PICK_IMAGE)
     }
 
-    override fun startActivityForResult(intent: Intent?, requestCode: Int) {
-        super.startActivityForResult(intent, requestCode)
-        if (requestCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = intent?.data
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RESULT_OK && requestCode == PICK_IMAGE && data !== null && data.data != null){
+            imageUri = data.data
             binding.profileImage.setImageURI(imageUri)
         }
     }

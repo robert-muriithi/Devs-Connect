@@ -17,8 +17,10 @@
         <entry key="app/src/main/res/layout/book_marked_contacts_recycler_layout.xml" value="0.67" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/custom_reset_success.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/employer_market_place_recycler_layout.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/finalist_home_recycler_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/finalist_home_recycler_view.xml" value="0.14814814814814814" />
+        <entry key="app/src/main/res/layout/finalist_market_place_recycler_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_company_information.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_custom_dialog.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_employer_create_account.xml" value="0.33" />

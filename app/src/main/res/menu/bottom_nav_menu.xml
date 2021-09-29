@@ -4,11 +4,11 @@
     <item
         android:icon="@drawable/home_nav"
         android:title="Home"
-        android:id="@+id/nav_home"/>
+        android:id="@+id/finalistHomeFragment"/>
     <item
         android:icon="@drawable/people"
         android:title="Connect"
-        android:id="@+id/nav_connect"/>
+        android:id="@+id/finalistMarketPlaceFragment"/>
     <item
         android:icon="@drawable/chat_bubble"
         android:title="Notification"

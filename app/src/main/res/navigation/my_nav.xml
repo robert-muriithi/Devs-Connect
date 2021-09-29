@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/viewPagerFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -65,6 +65,9 @@
         android:label="fragment_employer_create_account"
         tools:layout="@layout/fragment_employer_create_account" >
         <action
+            android:id="@+id/action_employerCreateAccount_to_companyInformation"
+            app:destination="@id/companyInformation" />
+        <action
             android:id="@+id/action_employerCreateAccount_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
@@ -99,6 +102,9 @@
         <action
             android:id="@+id/action_employerHomeFragment_to_employerMarketPlaceFragment"
             app:destination="@id/employerMarketPlaceFragment" />
+        <action
+            android:id="@+id/action_employerHomeFragment_to_jobPostingFragment"
+            app:destination="@id/jobPostingFragment" />
     </fragment>
     <fragment
         android:id="@+id/finalistHomeFragment"
@@ -119,4 +125,22 @@
         android:name="com.example.recruiter.ui.FinalistMarketPlaceFragment"
         android:label="fragment_finalist_market_place"
         tools:layout="@layout/fragment_finalist_market_place" />
+    <fragment
+        android:id="@+id/companyInformation"
+        android:name="com.example.recruiter.ui.CompanyInformation"
+        android:label="fragment_company_information"
+        tools:layout="@layout/fragment_company_information" >
+        <action
+            android:id="@+id/action_companyInformation_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobPostingFragment"
+        android:name="com.example.recruiter.ui.JobPostingFragment"
+        android:label="fragment_job_posting"
+        tools:layout="@layout/fragment_job_posting" >
+        <action
+            android:id="@+id/action_jobPostingFragment_to_employerHomeFragment"
+            app:destination="@id/employerHomeFragment" />
+    </fragment>
 </navigation>
