@@ -2,10 +2,12 @@ package com.example.recruiter.ui
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -21,7 +23,7 @@ class SignInFragment : Fragment() {
     private lateinit var binding: FragmentFinalistCreateAccountBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var userId : String
+    val category = "Developer"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,13 +39,20 @@ class SignInFragment : Fragment() {
         }
 
         binding.registerBtn.setOnClickListener {
-            val category = binding.spinner.selectedItem.toString().trim()
+            val specialty = binding.spinner.selectedItem.toString().trim()
             val full_name = binding.finalistFullName.editText?.text.toString().trim()
             val email = binding.finalistEmail.editText?.text.toString().trim()
             val phoneNumber = binding.finalistPhoneNumber.editText?.text.toString().trim()
             val password = binding.finalistPassword.editText?.text.toString().trim()
             val confirm_pass = binding.finalistConfirmPassword.editText?.text.toString().trim()
 
+            if (binding.spinner.count == 0){
+                val errorText = binding.spinner.selectedView as TextView
+                errorText.error = "client required"
+                errorText.requestFocus()
+                return@setOnClickListener
+
+            }
             if (TextUtils.isEmpty(full_name)){
                 binding.finalistFullName.error = "Required"
             }
@@ -66,9 +75,12 @@ class SignInFragment : Fragment() {
                 binding.progressbar.isVisible = true
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
+                    Log.d(TAG,"onCreateView: Registration initialized")
                     binding.progressbar.isVisible = false
-                    val finalist = Finalist(category,full_name, email,phoneNumber)
+                    val finalist = Finalist(category, full_name, email, phoneNumber,password)
                     databaseReference.push().setValue(finalist)
+                    Toast.makeText(requireContext(), "Account Created Succesfully", Toast.LENGTH_SHORT).show()
+
 
                 }
             }

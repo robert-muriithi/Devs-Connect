@@ -4,14 +4,14 @@
     <item
         android:icon="@drawable/home_nav"
         android:title="Home"
-        android:id="@+id/finalistHomeFragment"/>
+        android:id="@+id/employerHomeFragment"/>
     <item
         android:icon="@drawable/people"
-        android:title="Connect"
-        android:id="@+id/finalistMarketPlaceFragment"/>
+        android:title="Market place"
+        android:id="@+id/employerMarketPlaceFragment"/>
     <item
         android:icon="@drawable/chat_bubble"
-        android:title="Notification"
+        android:title="Chat"
         android:id="@+id/nav_notification"/>
     <item
         android:icon="@drawable/ic_user"

@@ -22,6 +22,7 @@ class EmployerCreateAccount : Fragment() {
     private lateinit var binding: FragmentEmployerCreateAccountBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+    val category = "Employer"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +76,7 @@ class EmployerCreateAccount : Fragment() {
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                 if (it.isSuccessful){
                     binding.progressBar2.isVisible = false
-                    val employer = Employer(fullName,email,phoneNumber,position)
+                    val employer = Employer(category,fullName, email, phoneNumber, position)
                     databaseReference.push().setValue(employer)
 
 

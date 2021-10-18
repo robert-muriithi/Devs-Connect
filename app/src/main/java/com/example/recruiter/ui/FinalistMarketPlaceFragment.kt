@@ -13,7 +13,7 @@ import com.example.recruiter.model.JobsPost
 import com.google.firebase.database.*
 import com.example.recruiter.adapter.FinMarketPlaceRecyclerAdapter as FinMarketPlaceRecyclerAdapter
 
-private const val TAG = "FinalistMarketPlaceFrag"
+internal const val TAG = "FinalistMarketPlaceFrag"
 class FinalistMarketPlaceFragment : Fragment() {
 private lateinit var binding: FragmentFinalistMarketPlaceBinding
 private lateinit var databaseReference: DatabaseReference

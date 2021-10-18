@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
 import com.example.recruiter.others.CustomDialogFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -27,6 +28,10 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        /*val navigationView : BottomNavigationView? = activity?.findViewById(R.id.bottomNavigationView)
+        navigationView?.isVisible = false*/
+
 
         auth = FirebaseAuth.getInstance()
        binding.createAccount.setOnClickListener {
