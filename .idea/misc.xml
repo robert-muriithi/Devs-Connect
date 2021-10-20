@@ -3,12 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/active.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/chat_bubble.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/edittext1.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/home_nav.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_apple_11.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/ic_finalist_image.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_google_1_1.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_microsoft.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/layout_bg.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/login_spinner_bg.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/mail_big.xml" value="0.190625" />
+        <entry key="app/src/main/res/drawable/people.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/person_24.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/pin_bg.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/spinner_background.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/font/cabin_medium_italic.xml" value="0.2078125" />
         <entry key="app/src/main/res/font/font.xml" value="0.2078125" />
@@ -24,6 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_company_information.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_custom_dialog.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/fragment_emp_update_profile.xml" value="0.32251908396946566" />
         <entry key="app/src/main/res/layout/fragment_employer_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_employer_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_employer_market_place.xml" value="0.33" />
