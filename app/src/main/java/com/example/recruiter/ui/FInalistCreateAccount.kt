@@ -32,7 +32,7 @@ class SignInFragment : Fragment() {
         binding = FragmentFinalistCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().getReference("all_details")
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child("finalists")
         binding.return2Login.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_loginFragment)
 

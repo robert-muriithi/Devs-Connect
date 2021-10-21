@@ -14,13 +14,15 @@ import com.example.recruiter.databinding.FragmentLoginBinding
 import com.example.recruiter.others.CustomDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private  lateinit var auth: FirebaseAuth
-   // private lateinit var databaseReference: DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +30,8 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
+
+
 
         /*val navigationView : BottomNavigationView? = activity?.findViewById(R.id.bottomNavigationView)
         navigationView?.isVisible = false*/
@@ -58,7 +62,9 @@ class LoginFragment : Fragment() {
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
+                    databaseReference = FirebaseDatabase.getInstance().getReference("users")
                     val userType = binding.usertypeSpinner.selectedItem.toString()
+                  //  if (databaseReference.child())
                     if (userType == "Employer"){
                         binding.progressBar.isVisible = false
                         //Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()

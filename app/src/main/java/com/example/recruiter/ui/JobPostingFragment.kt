@@ -16,14 +16,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class JobPostingFragment : Fragment() {
-private lateinit var binding: FragmentJobPostingBinding
-private lateinit var databaseReference: DatabaseReference
+    private lateinit var binding: FragmentJobPostingBinding
+    private lateinit var databaseReference: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentJobPostingBinding.inflate(inflater,container,false)
+        binding = FragmentJobPostingBinding.inflate(inflater, container, false)
         val view = binding.root
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Jobs_Posted")
@@ -34,18 +34,15 @@ private lateinit var databaseReference: DatabaseReference
             val jobRole = binding.role.editText?.text.toString().trim()
             val jobDescription = binding.jobDescription.editText?.text.toString().trim()
 
-            if (TextUtils.isEmpty(jobTitle)){
+            if (TextUtils.isEmpty(jobTitle)) {
                 binding.jobTitle.error = "Required"
-            }
-            else if (TextUtils.isEmpty(jobRole)){
+            } else if (TextUtils.isEmpty(jobRole)) {
                 binding.role.error = "Required"
-            }
-            else if (TextUtils.isEmpty(jobDescription)){
+            } else if (TextUtils.isEmpty(jobDescription)) {
                 binding.jobDescription.error = "Required"
-            }
-            else{
+            } else {
                 binding.postJobProgressBar.isVisible = true
-                senDataToFirebase(jobTitle,jobRole,jobDescription)
+                senDataToFirebase(jobTitle, jobRole, jobDescription)
             }
         }
 
@@ -53,7 +50,7 @@ private lateinit var databaseReference: DatabaseReference
     }
 
     private fun senDataToFirebase(jobTitle: String, jobRole: String, jobDescription: String) {
-        val jobsPost = JobsPost(jobTitle,jobRole,jobDescription)
+        val jobsPost = JobsPost(jobTitle, jobRole, jobDescription)
         databaseReference.push().setValue(jobsPost).addOnSuccessListener {
             binding.postJobProgressBar.isVisible = false
             Toast.makeText(requireContext(), "Job posted successfully", Toast.LENGTH_SHORT).show()

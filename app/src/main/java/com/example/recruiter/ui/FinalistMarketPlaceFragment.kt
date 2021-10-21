@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentFinalistMarketPlaceBinding
 import com.example.recruiter.model.FinalistMarketPlace
@@ -33,6 +34,7 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
 
         val postListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                //binding.finMarketPlaceProgressBar.isVisible = true
                 for (i: DataSnapshot in snapshot.children){
                     val job = i.getValue(FinalistMarketPlace::class.java)
                     jobsList.add(job!!)
@@ -42,6 +44,7 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
             }
 
             override fun onCancelled(error: DatabaseError) {
+              //  binding.finMarketPlaceProgressBar.isVisible = false
                 Log.e(TAG, "onCancelled: ", error.toException() )
             }
 
