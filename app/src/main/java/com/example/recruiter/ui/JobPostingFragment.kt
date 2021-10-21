@@ -34,15 +34,20 @@ class JobPostingFragment : Fragment() {
             val jobRole = binding.role.editText?.text.toString().trim()
             val jobDescription = binding.jobDescription.editText?.text.toString().trim()
 
-            if (TextUtils.isEmpty(jobTitle)) {
-                binding.jobTitle.error = "Required"
-            } else if (TextUtils.isEmpty(jobRole)) {
-                binding.role.error = "Required"
-            } else if (TextUtils.isEmpty(jobDescription)) {
-                binding.jobDescription.error = "Required"
-            } else {
-                binding.postJobProgressBar.isVisible = true
-                senDataToFirebase(jobTitle, jobRole, jobDescription)
+            when {
+                TextUtils.isEmpty(jobTitle) -> {
+                    binding.jobTitle.error = "Required"
+                }
+                TextUtils.isEmpty(jobRole) -> {
+                    binding.role.error = "Required"
+                }
+                TextUtils.isEmpty(jobDescription) -> {
+                    binding.jobDescription.error = "Required"
+                }
+                else -> {
+                    binding.postJobProgressBar.isVisible = true
+                    senDataToFirebase(jobTitle, jobRole, jobDescription)
+                }
             }
         }
 

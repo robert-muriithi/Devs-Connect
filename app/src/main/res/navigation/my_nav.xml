@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/finalistUpdateProfile">
 
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -143,4 +143,14 @@
             android:id="@+id/action_jobPostingFragment_to_employerHomeFragment"
             app:destination="@id/employerHomeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/finalistUpdateProfile"
+        android:name="com.example.recruiter.ui.FinalistUpdateProfile"
+        android:label="fragment_finalist_update_profile"
+        tools:layout="@layout/fragment_finalist_update_profile" />
+    <fragment
+        android:id="@+id/empUpdateProfile"
+        android:name="com.example.recruiter.ui.EmpUpdateProfile"
+        android:label="fragment_emp_update_profile"
+        tools:layout="@layout/fragment_emp_update_profile" />
 </navigation>
