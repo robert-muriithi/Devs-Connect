@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.recruiter.R
@@ -35,6 +36,7 @@ private lateinit var databaseReference: DatabaseReference
             val workExperience = binding.updateWorkExperience.text.toString()
             val email = binding.updateEmail.text.toString()
             val about = binding.updateAbout.text.toString()
+         //   val javaCheckBox = binding.javaCheckbox.isChecked
 
             when {
                 TextUtils.isEmpty(name) -> {
@@ -55,34 +57,12 @@ private lateinit var databaseReference: DatabaseReference
                 else -> {
                     binding.progressBar4.isVisible = true
                     sendDataToFirebase("fnlfnkl",location, workExperience, email,about,"dbsdkflhdkl","nfnfklnklf")
+
                 }
             }
         }
 
         return view
-        /*fun onCheckboxClicked(view: View) {
-            if (view is CheckBox) {
-                val checked: Boolean = view.isChecked
-
-                when (view.id) {
-                    R.id.checkbox_meat -> {
-                        if (checked) {
-                            // Put some meat on the sandwich
-                        } else {
-                            // Remove the meat
-                        }
-                    }
-                    R.id.checkbox_cheese -> {
-                        if (checked) {
-                            // Cheese me
-                        } else {
-                            // I'm lactose intolerant
-                        }
-                    }
-                    //
-                }
-            }
-        }*/
 
     }
 
@@ -102,6 +82,46 @@ private lateinit var databaseReference: DatabaseReference
 
 
     }
+    fun onCheckboxClicked(view: View) {
+        if (view is CheckBox) {
+            val checked: Boolean = view.isChecked
+
+            when (view.id) {
+                R.id.javaCheckbox -> {
+                    if (checked) {
+                        databaseReference.push().setValue(view)
+                    }
+                }
+                R.id.pythonCheckbox -> {
+                    if (checked) {
+                        databaseReference.push().setValue(view)
+                    }
+                }
+                R.id.javascriptCheckbox ->{
+                    if (checked){
+                        databaseReference.push().setValue(view)
+                    }
+                }
+                R.id.cppCheckbox -> {
+                    if (checked){
+                        databaseReference.push().setValue(view)
+                    }
+                }
+                R.id.htmlCheckbox -> {
+                    if (checked){
+                        databaseReference.push().setValue(view)
+                    }
+                }
+                R.id.uxCheckbox -> {
+                    if (checked){
+                        databaseReference.push().setValue(view)
+                    }
+                }
+                //
+            }
+        }
+    }
+
 
 
 }

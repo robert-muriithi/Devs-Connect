@@ -170,7 +170,6 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/edittext1"
                         android:hint="Upload yor cover letter"
-                        android:inputType="text"
                         android:padding="15dp"
                         android:textSize="12sp" />
                     <com.google.android.material.button.MaterialButton
@@ -204,7 +203,7 @@
                         android:drawableEnd="@drawable/ic_edit"
                         android:drawableRight="@drawable/ic_edit"
                         android:hint="Company About"
-                        android:inputType="number"
+                        android:inputType="textEmailAddress"
                         android:padding="15dp"
                         android:textSize="12sp" />
                 </LinearLayout>
