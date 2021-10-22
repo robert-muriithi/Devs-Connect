@@ -21,11 +21,12 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/empUpdateImage"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/image"
+                android:src="@drawable/image"
 
                 />
 
