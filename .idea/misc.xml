@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/active.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/chat_bubble.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/edit_text_shadow.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/edittext1.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/home_nav.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_apple_11.xml" value="0.19114583333333332" />
@@ -16,6 +17,8 @@
         <entry key="app/src/main/res/drawable/layout_bg.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/login_spinner_bg.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/mail_big.xml" value="0.190625" />
+        <entry key="app/src/main/res/drawable/message_blue.xml" value="0.1875" />
+        <entry key="app/src/main/res/drawable/message_gray.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/people.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/person_24.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/pin_bg.xml" value="0.19114583333333332" />
@@ -26,6 +29,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/book_marked_contacts_recycler_layout.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/chat_row.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/custom_reset_success.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/employer_market_place_recycler_layout.xml" value="0.17604166666666668" />
@@ -33,6 +37,7 @@
         <entry key="app/src/main/res/layout/finalist_home_recycler_view.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/finalist_market_place_recycler_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/fragment_chat_room.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_company_information.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_custom_dialog.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_emp_update_profile.xml" value="0.32251908396946566" />
@@ -55,6 +60,7 @@
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/market_place_recycler_layout.xml" value="0.16" />
         <entry key="app/src/main/res/layout/marketplace2layout.xml" value="0.5352286773794809" />
+        <entry key="app/src/main/res/layout/message_row.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.17604166666666668" />
       </map>
     </option>
