@@ -82,45 +82,6 @@ private lateinit var databaseReference: DatabaseReference
 
 
     }
-    fun onCheckboxClicked(view: View) {
-        if (view is CheckBox) {
-            val checked: Boolean = view.isChecked
-
-            when (view.id) {
-                R.id.javaCheckbox -> {
-                    if (checked) {
-                        databaseReference.push().setValue(view)
-                    }
-                }
-                R.id.pythonCheckbox -> {
-                    if (checked) {
-                        databaseReference.push().setValue(view)
-                    }
-                }
-                R.id.javascriptCheckbox ->{
-                    if (checked){
-                        databaseReference.push().setValue(view)
-                    }
-                }
-                R.id.cppCheckbox -> {
-                    if (checked){
-                        databaseReference.push().setValue(view)
-                    }
-                }
-                R.id.htmlCheckbox -> {
-                    if (checked){
-                        databaseReference.push().setValue(view)
-                    }
-                }
-                R.id.uxCheckbox -> {
-                    if (checked){
-                        databaseReference.push().setValue(view)
-                    }
-                }
-                //
-            }
-        }
-    }
 
 
 

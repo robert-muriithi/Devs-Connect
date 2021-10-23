@@ -188,16 +188,23 @@
 
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/updateProfileButton"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:onClick="upDateProfile"
                 android:text="Update"
                 app:cornerRadius="10dp"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar5"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
         </LinearLayout>
 
     </ScrollView>

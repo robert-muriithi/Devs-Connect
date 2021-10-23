@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentEmpUpdateProfileBinding
 import com.example.recruiter.model.EmployerProfile
@@ -44,12 +45,41 @@ class EmpUpdateProfile : Fragment() {
             intent.type = "image/*"
             startActivityForResult(intent, 45)
         }
-        if (selectedImage != null){
-            val reference = firebaseStorage.reference.child("Profiles").child(firebaseAuth.uid!!)
-            reference.putFile(selectedImage!!).addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    reference.downloadUrl.addOnSuccessListener { uri ->
-                        val imageUrl = uri.toString()
+        binding.updateProfileButton.setOnClickListener {
+            if (selectedImage != null){
+                binding.progressBar5.isVisible = true
+                val reference = firebaseStorage.reference.child("Profiles").child(firebaseAuth.uid!!)
+                reference.putFile(selectedImage!!).addOnCompleteListener { task ->
+                    if (task.isSuccessful){
+                        reference.downloadUrl.addOnSuccessListener { uri ->
+                            val imageUrl = uri.toString()
+                            val companyName: String = binding.companyName.text.toString()
+                            val companyDesc: String = binding.companyDescription.text.toString()
+                            val websiteLink: String = binding.websiteLink.text.toString()
+                            val companyEmail: String = binding.companyEmail.text.toString()
+                            val location: String = binding.location.text.toString()
+                            val about: String = binding.companyAbout.text.toString()
+                            val uid = firebaseAuth.uid
+                            val employerProfile = EmployerProfile(
+                                imageUrl,
+                                companyName,
+                                companyDesc,
+                                websiteLink,
+                                companyEmail,
+                                location,
+                                about
+                            )
+                            firebaseDatabase.reference.child("Company Profile Details").child(uid!!)
+                                .setValue(employerProfile).addOnSuccessListener {
+                                    binding.progressBar5.isVisible = false
+                                    Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                                }.addOnFailureListener {
+                                    binding.progressBar5.isVisible = false
+                                    Toast.makeText(requireContext(), "Failed to update", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    }
+                    else{
                         val companyName: String = binding.companyName.text.toString()
                         val companyDesc: String = binding.companyDescription.text.toString()
                         val websiteLink: String = binding.websiteLink.text.toString()
@@ -57,25 +87,20 @@ class EmpUpdateProfile : Fragment() {
                         val location: String = binding.location.text.toString()
                         val about: String = binding.companyAbout.text.toString()
                         val uid = firebaseAuth.uid
-                        val employerProfile = EmployerProfile(
-                            imageUrl,
-                            companyName,
-                            companyDesc,
-                            websiteLink,
-                            companyEmail,
-                            location,
-                            about
-                        )
-                        firebaseDatabase.reference.child("Registered Users").child(uid!!)
-                            .setValue(employerProfile).addOnSuccessListener {
-                                Toast.makeText(requireContext(), "Profile image updated successfully", Toast.LENGTH_SHORT).show()
-                            }.addOnFailureListener {
-                                Toast.makeText(requireContext(), "Failed to update", Toast.LENGTH_SHORT).show()
-                            }
+                        val employerProfile = EmployerProfile("No image", companyName,companyDesc, websiteLink, companyEmail, location, about)
+                        firebaseDatabase.reference.child("Profile Details").child(uid!!).setValue(employerProfile).addOnSuccessListener {
+                            binding.progressBar5.isVisible = false
+                            Toast.makeText(requireContext(), "Updated with no image", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            binding.progressBar5.isVisible = false
+                            Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                 }
             }
         }
+
 
         return view
     }
@@ -94,13 +119,13 @@ class EmpUpdateProfile : Fragment() {
                             val filePath = uri.toString()
                             val obj = HashMap<String, Any>()
                             obj["image"] = filePath
-                            firebaseDatabase.reference.child("users")
+                            firebaseDatabase.reference.child("Profile Details")
                                 .child(FirebaseAuth.getInstance().uid!!)
                                 .updateChildren(obj).addOnSuccessListener { }
                         }
                     }
                 }
-                binding!!.empUpdateImage.setImageURI(data.data)
+                binding.empUpdateImage.setImageURI(data.data)
                 selectedImage = data.data
             }
         }

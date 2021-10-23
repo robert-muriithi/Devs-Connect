@@ -59,7 +59,7 @@
         <entry key="app/src/main/res/layout/fragment_sign_up_category.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/market_place_recycler_layout.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/marketplace2layout.xml" value="0.5352286773794809" />
+        <entry key="app/src/main/res/layout/marketplace2layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/message_row.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.17604166666666668" />
       </map>
@@ -74,7 +74,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.2" />
+        <option name="scale" value="0.33" />
       </ProjectState>
     </option>
   </component>

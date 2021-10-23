@@ -7,6 +7,7 @@
     tools:context=".ui.FinalistMarketPlaceFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/finalist_marketplace_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

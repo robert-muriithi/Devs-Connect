@@ -218,54 +218,16 @@
                         android:layout_height="wrap_content"
                         android:text="Skills"
                         android:textSize="18sp"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Java"
-                            android:id="@+id/javaCheckbox"
-                            />
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Python"
-                            android:id="@+id/pythonCheckbox"/>
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="UX/UI Design"
-                            android:id="@+id/uxCheckbox"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="C#"
-                            android:id="@+id/cCheckbox"/>
 
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="C++"
-                            android:id="@+id/cppCheckbox"/>
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="HTML"
-                            android:id="@+id/htmlCheckbox"/>
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Javascript"
-                            android:id="@+id/javascriptCheckbox"/>
-                    </LinearLayout>
-
+                   <EditText
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:hint="Java, Python etc.."
+                       android:background="@drawable/edittext1"
+                       android:drawableEnd="@drawable/ic_edit"
+                       android:padding="15dp"
+                       android:textSize="12sp"
+                       android:id="@+id/skillsEditText"/>
 
                 </LinearLayout>
 
