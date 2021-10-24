@@ -158,7 +158,7 @@
         android:id="@+id/chatFragment"
         android:name="com.example.recruiter.ui.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" >
+        tools:layout="@layout/fragment_chat">
         <action
             android:id="@+id/action_chatFragment_to_employerHomeFragment"
             app:destination="@id/employerHomeFragment" />
@@ -168,6 +168,9 @@
         <action
             android:id="@+id/action_chatFragment_to_employerMarketplace2"
             app:destination="@id/employerMarketplace2" />
+        <action
+            android:id="@+id/action_chatFragment_to_chatRoomFragment2"
+            app:destination="@id/chatRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/employerMarketplace2"
@@ -183,6 +186,9 @@
         <action
             android:id="@+id/action_employerMarketplace2_to_chatFragment3"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_employerMarketplace2_to_viewProfile3"
+            app:destination="@id/viewProfile3" />
     </fragment>
     <fragment
         android:id="@+id/employerProfileFragment"
@@ -206,5 +212,13 @@
         android:id="@+id/chatRoomFragment"
         android:name="com.example.recruiter.ui.ChatRoomFragment"
         android:label="fragment_chat_room"
-        tools:layout="@layout/fragment_chat_room" />
+        tools:layout="@layout/fragment_chat_room" >
+        <argument
+            android:name="mechanicDetails"
+            app:argType="com.example.recruiter.model.Mechanic" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewProfile3"
+        android:name="com.example.recruiter.ui.ViewProfile"
+        android:label="ViewProfile" />
 </navigation>

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -82,6 +83,15 @@ dependencies {
     implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-messaging'
+
+    // Firebase for Realtime Database
+    implementation 'com.firebaseui:firebase-ui-database:8.0.0'
+
+    // FirebaseUI for Firebase Auth
+    implementation 'com.firebaseui:firebase-ui-auth:8.0.0'
+
+    // FirebaseUI for Cloud Storage
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.0'
 
 
     //circular image

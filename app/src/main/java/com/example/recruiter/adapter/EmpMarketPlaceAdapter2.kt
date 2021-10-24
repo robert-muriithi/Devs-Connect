@@ -7,18 +7,19 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recruiter.databinding.Marketplace2layoutBinding
+import com.example.recruiter.model.BookmarkedContacts
 import com.example.recruiter.model.EmpMarketPlace2
 
 class EmpMarketPlaceAdapter2 (private val onClickListener: OnClickListener) :
-    ListAdapter<EmpMarketPlace2, EmpMarketPlaceAdapter2.myViewHolder>(myDiffUtil) {
-    object myDiffUtil : DiffUtil.ItemCallback<EmpMarketPlace2>() {
-        override fun areItemsTheSame(oldItem: EmpMarketPlace2, newItem: EmpMarketPlace2): Boolean {
+    ListAdapter<BookmarkedContacts, EmpMarketPlaceAdapter2.myViewHolder>(myDiffUtil) {
+    object myDiffUtil : DiffUtil.ItemCallback<BookmarkedContacts>() {
+        override fun areItemsTheSame(oldItem: BookmarkedContacts, newItem: BookmarkedContacts): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: EmpMarketPlace2,
-            newItem: EmpMarketPlace2
+            oldItem: BookmarkedContacts,
+            newItem: BookmarkedContacts
         ): Boolean {
             return oldItem.name == oldItem.name
         }
@@ -27,13 +28,13 @@ class EmpMarketPlaceAdapter2 (private val onClickListener: OnClickListener) :
 
     inner class myViewHolder(private var binding: Marketplace2layoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(items: EmpMarketPlace2) {
+        fun bind(items: BookmarkedContacts) {
             Glide.with(binding.markeplace2Image)
-                .load(items?.imageURL)
+                .load(items?.image)
                 .into(binding.markeplace2Image)
             binding.marketplace2Name.text = items?.name
-            binding.marketplace2About.text = items?.bio
-            binding.marketplace2Category.text = items?.category
+            binding.marketplace2Category.text = items?.speciality
+
 
 
         }
@@ -56,7 +57,7 @@ class EmpMarketPlaceAdapter2 (private val onClickListener: OnClickListener) :
             onClickListener.onClick(items)
         }
     }
-    class OnClickListener(val clickListener : (empl: EmpMarketPlace2) -> Unit)  {
-        fun onClick(emp: EmpMarketPlace2) = clickListener(emp)
+    class OnClickListener(val clickListener : (empl: BookmarkedContacts) -> Unit)  {
+        fun onClick(emp: BookmarkedContacts) = clickListener(emp)
     }
 }

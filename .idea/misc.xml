@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/edittext1.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/home_nav.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_apple_11.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_finalist_image.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_google_1_1.xml" value="0.19114583333333332" />
@@ -19,6 +20,7 @@
         <entry key="app/src/main/res/drawable/mail_big.xml" value="0.190625" />
         <entry key="app/src/main/res/drawable/message_blue.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/message_gray.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/outline_send_24.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/people.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/person_24.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/pin_bg.xml" value="0.19114583333333332" />
@@ -59,10 +61,12 @@
         <entry key="app/src/main/res/layout/fragment_reset_password.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_sign_up_category.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/fragment_view_profile.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/market_place_recycler_layout.xml" value="0.16" />
         <entry key="app/src/main/res/layout/marketplace2layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/message_row.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/menu/options_menu.xml" value="0.17604166666666668" />
       </map>
     </option>
   </component>

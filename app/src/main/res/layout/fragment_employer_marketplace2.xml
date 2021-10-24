@@ -21,14 +21,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Mobile Development"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Marketplace"
+            android:textStyle="bold"
             android:textColor="@color/midnightBlue"
-            android:textSize="20sp"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:id="@+id/marketplace2Recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

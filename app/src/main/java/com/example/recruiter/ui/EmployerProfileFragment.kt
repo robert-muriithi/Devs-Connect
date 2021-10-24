@@ -1,13 +1,13 @@
 package com.example.recruiter.ui
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentEmployerProfileBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class EmployerProfileFragment : Fragment() {
 private lateinit var binding: FragmentEmployerProfileBinding
@@ -33,7 +33,35 @@ private lateinit var binding: FragmentEmployerProfileBinding
         }
 
 
+
         return view
     }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.item1){
+            Toast.makeText(activity, "Item 1 selected", Toast.LENGTH_SHORT).show()
+        }
+        if (id == R.id.item2){
+            Toast.makeText(activity, "Item 2 selected", Toast.LENGTH_SHORT).show()
+        }
+        if (id == R.id.item3){
+            Toast.makeText(activity, "Item 3 selected", Toast.LENGTH_SHORT).show()
+            FirebaseAuth.getInstance().signOut()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
 }

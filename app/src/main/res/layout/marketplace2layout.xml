@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/browser_actions_bg_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="15dp">
+        android:elevation="15dp"
+        app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -56,15 +58,6 @@
                 app:layout_constraintStart_toStartOf="@+id/marketplace2Name"
                 app:layout_constraintTop_toBottomOf="@+id/marketplace2Name" />
 
-            <TextView
-                android:id="@+id/marketplace2About"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/midnightBlue"
-                android:text="I build android apps with java and kotlin"
-                app:layout_constraintStart_toStartOf="@+id/marketplace2Category"
-                app:layout_constraintTop_toBottomOf="@+id/marketplace2Category" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/marketplace2ViewProfileBtn"
@@ -78,7 +71,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/midnightBlue"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/marketplace2About" />
+                app:layout_constraintTop_toBottomOf="@+id/marketplace2Category" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
