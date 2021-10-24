@@ -32,7 +32,7 @@ class SignInFragment : Fragment() {
         binding = FragmentFinalistCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users")
+        databaseReference = FirebaseDatabase.getInstance().getReference("users")
         binding.return2Login.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_loginFragment)
 
@@ -83,7 +83,9 @@ class SignInFragment : Fragment() {
 
 
                 }
-            }
+            }/*.addOnFailureListener {
+                if (it.)
+                }*/
         }
 
 

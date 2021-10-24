@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recruiter.databinding.FinalistMarketPlaceRecyclerLayoutBinding
 import com.example.recruiter.model.FinalistMarketPlace
 
-class FinMarketPlaceRecyclerAdapter : ListAdapter<FinalistMarketPlace, FinMarketPlaceRecyclerAdapter.MyViewHolder>(MyDiffUtil) {
+class FinMarketPlaceRecyclerAdapter (private val onClickListener : OnClickListener) : ListAdapter<FinalistMarketPlace, FinMarketPlaceRecyclerAdapter.MyViewHolder>(MyDiffUtil) {
    inner class MyViewHolder(private var binding: FinalistMarketPlaceRecyclerLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
        fun bind(items: FinalistMarketPlace?) {
            binding.jTitle.text = items?.jobTitle
@@ -41,5 +41,11 @@ class FinMarketPlaceRecyclerAdapter : ListAdapter<FinalistMarketPlace, FinMarket
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val items = getItem(position)
         holder.bind(items)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(items)
+        }
+    }
+    class OnClickListener(val clickListener : (finMrkt: FinalistMarketPlace) -> Unit){
+        fun onClick(finMrkt: FinalistMarketPlace) = clickListener(finMrkt)
     }
 }

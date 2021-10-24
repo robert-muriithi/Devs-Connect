@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentEmpUpdateProfileBinding
 import com.example.recruiter.model.EmployerProfile
@@ -73,8 +74,10 @@ class EmpUpdateProfile : Fragment() {
                                 .setValue(employerProfile).addOnSuccessListener {
                                     binding.progressBar5.isVisible = false
                                     Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                                    findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
                                 }.addOnFailureListener {
                                     binding.progressBar5.isVisible = false
+                                    findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
                                     Toast.makeText(requireContext(), "Failed to update", Toast.LENGTH_SHORT).show()
                                 }
                         }

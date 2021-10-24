@@ -42,19 +42,20 @@
         <entry key="app/src/main/res/layout/fragment_custom_dialog.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_emp_update_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_employer_create_account.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_employer_home.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_employer_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_employer_market_place.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_employer_marketplace2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_employer_marketplace2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_employer_onboarding.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_employer_profile.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_finalist_create_account.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_finalist_home.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_finalist_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_finalist_market_place.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/fragment_finalist_onboarding.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_finalist_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_finalist_update_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_job_posting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_reset_password.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_sign_up_category.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.17239583333333333" />

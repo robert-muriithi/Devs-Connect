@@ -1,21 +1,29 @@
 package com.example.recruiter.ui
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
-import android.net.Uri
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.provider.MediaStore
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.recruiter.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recruiter.adapter.FinalistHomeAdapter
 import com.example.recruiter.databinding.FragmentFinalistHomeBinding
+import com.example.recruiter.model.CompanyInfor
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class FinalistHomeFragment : Fragment() {
 private lateinit var binding: FragmentFinalistHomeBinding
-    private val PICK_IMAGE = 1
-    var imageUri: Uri? = null
+private lateinit var database: FirebaseDatabase
+private lateinit var databaseReference: DatabaseReference
+private var companyList = ArrayList<CompanyInfor>()
+private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickListener{
+    //navigate
+}) }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,26 +31,53 @@ private lateinit var binding: FragmentFinalistHomeBinding
         // Inflate the layout for this fragment
         binding = FragmentFinalistHomeBinding.inflate(layoutInflater,container, false)
         val view = binding.root
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding.finalistRecycler.layoutManager = layoutManager
 
-        binding.profileImage.setOnClickListener {
-            openGallery()
-        }
+       database = FirebaseDatabase.getInstance()
 
+
+        fetch()
+        fetchProfile()
 
         return view
     }
 
-    private fun openGallery() {
-        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-        startActivityForResult(gallery,PICK_IMAGE)
+    private fun fetchProfile() {
+
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RESULT_OK && requestCode == PICK_IMAGE && data !== null && data.data != null){
-            imageUri = data.data
-            binding.profileImage.setImageURI(imageUri)
-        }
+    private fun fetch() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("Company information")
+        databaseReference.addValueEventListener(object  : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                companyList = ArrayList()
+                if (snapshot.exists()){
+                    Log.e(TAG, "onDataChange: Exist", )
+                    for (data in snapshot.children){
+                        val companies = data.getValue(CompanyInfor::class.java)
+                        companyList.add(companies!!)
+                    }
+                    adapter.submitList(companyList)
+                    binding.finalistRecycler.adapter = adapter
+                }
+                else{
+                    Log.e(TAG, "onDataChange: Failed")
+                }
+
+                val child = snapshot.children
+                child.forEach {
+                    var company = CompanyInfor(it.child("compName").value.toString(),
+                        it.child("compAbout").value.toString())
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d(TAG, "onCancelled: Error occured: ${error.message}")
+            }
+
+        })
     }
+
 
 }

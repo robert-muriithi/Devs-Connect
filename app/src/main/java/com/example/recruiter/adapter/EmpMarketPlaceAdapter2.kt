@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.recruiter.databinding.Marketplace2layoutBinding
 import com.example.recruiter.model.EmpMarketPlace2
 
-class EmpMarketPlaceAdapter2 :
+class EmpMarketPlaceAdapter2 (private val onClickListener: OnClickListener) :
     ListAdapter<EmpMarketPlace2, EmpMarketPlaceAdapter2.myViewHolder>(myDiffUtil) {
     object myDiffUtil : DiffUtil.ItemCallback<EmpMarketPlace2>() {
         override fun areItemsTheSame(oldItem: EmpMarketPlace2, newItem: EmpMarketPlace2): Boolean {
@@ -50,7 +50,13 @@ class EmpMarketPlaceAdapter2 :
     }
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        val items = getItem(position)
+        holder.bind(items)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(items)
+        }
+    }
+    class OnClickListener(val clickListener : (empl: EmpMarketPlace2) -> Unit)  {
+        fun onClick(emp: EmpMarketPlace2) = clickListener(emp)
     }
 }

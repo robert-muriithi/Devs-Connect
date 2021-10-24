@@ -8,14 +8,14 @@
     <item
         android:icon="@drawable/people"
         android:title="Market place"
-        android:id="@+id/employerMarketPlaceFragment"/>
+        android:id="@+id/employerMarketplace2"/>
     <item
         android:icon="@drawable/chat_bubble"
         android:title="Chat"
-        android:id="@+id/nav_notification"/>
+        android:id="@+id/chatRoomFragment"/>
     <item
         android:icon="@drawable/ic_user"
         android:title="Profile"
-        android:id="@+id/nav_profile"/>
+        android:id="@+id/employerProfileFragment"/>
 
 </menu>

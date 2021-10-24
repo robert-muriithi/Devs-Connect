@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.recruiter.databinding.BookMarkedContactsRecyclerLayoutBinding
 import com.example.recruiter.model.BookmarkedContacts
 
-class BookmarkedContactsRecyclerAdapter : ListAdapter<BookmarkedContacts,BookmarkedContactsRecyclerAdapter.MyViewHolder>(myDiffUtil) {
+class BookmarkedContactsRecyclerAdapter (private val onClickListener : OnClickListener) : ListAdapter<BookmarkedContacts,BookmarkedContactsRecyclerAdapter.MyViewHolder>(myDiffUtil) {
     object myDiffUtil: DiffUtil.ItemCallback<BookmarkedContacts>() {
         override fun areItemsTheSame(
             oldItem: BookmarkedContacts,
@@ -22,7 +22,7 @@ class BookmarkedContactsRecyclerAdapter : ListAdapter<BookmarkedContacts,Bookmar
             oldItem: BookmarkedContacts,
             newItem: BookmarkedContacts
         ): Boolean {
-            return newItem.id == oldItem.id
+            return newItem.name == oldItem.name
         }
 
     }
@@ -45,5 +45,11 @@ class BookmarkedContactsRecyclerAdapter : ListAdapter<BookmarkedContacts,Bookmar
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val items = getItem(position)
         holder.bind(items)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(items)
+        }
+    }
+    class  OnClickListener(val clickListener: (bookmarks: BookmarkedContacts) -> Unit){
+        fun onClick(bookmarks: BookmarkedContacts) = clickListener(bookmarks)
     }
 }

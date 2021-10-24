@@ -32,10 +32,10 @@ class EmployerCreateAccount : Fragment() {
         binding = FragmentEmployerCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users")
+        databaseReference = FirebaseDatabase.getInstance().getReference("users")
 
         binding.returnToLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
+           // findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
         }
 
         binding.create.setOnClickListener {
@@ -45,6 +45,8 @@ class EmployerCreateAccount : Fragment() {
             val email = binding.emailAddress.editText?.text.toString().trim()
             val phoneNumber = binding.EmployerPhonenumber.editText?.text.toString().trim()
             val position = binding.position.editText?.text.toString().trim()
+            val compName = binding.companyName.editText?.text.toString().trim()
+            val compAbout = binding.companyAbout.editText?.text.toString().trim()
             val password = binding.employerPassword.editText?.text.toString().trim()
             val confirmPassword = binding.employerConfirmPassword.editText?.text.toString().trim()
 
@@ -60,10 +62,15 @@ class EmployerCreateAccount : Fragment() {
                // return@setOnClickListener
             }
             else if (TextUtils.isEmpty(position)){
-
                 binding.position.error = "required"
             //return@setOnClickListener
-            }else if (TextUtils.isEmpty(password)){
+            }else if (TextUtils.isEmpty(compName)){
+                binding.companyName.error = "required"
+            }
+            else if (TextUtils.isEmpty(compAbout)){
+                binding.companyAbout.error = "required"
+            }
+            else if (TextUtils.isEmpty(password)){
                 binding.employerPassword.error = "required"
             }
             else if (TextUtils.isEmpty(confirmPassword)){
@@ -76,10 +83,8 @@ class EmployerCreateAccount : Fragment() {
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                 if (it.isSuccessful){
                     binding.progressBar2.isVisible = false
-                    val employer = Employer(category,fullName, email, phoneNumber, position)
+                    val employer = Employer(fullName,email,phoneNumber,position,compName,compAbout)
                     databaseReference.push().setValue(employer)
-
-
                 }
             }
 

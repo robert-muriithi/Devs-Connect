@@ -25,7 +25,9 @@ private lateinit var binding: FragmentFinalistMarketPlaceBinding
 private lateinit var database: FirebaseDatabase
 var job : FinalistMarketPlace? = null
 private var jobsList = ArrayList<FinalistMarketPlace>()
-private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyclerAdapter() }
+private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyclerAdapter(FinMarketPlaceRecyclerAdapter.OnClickListener{
+
+}) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +40,7 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
        // databaseReference = FirebaseDatabase.getInstance().getReference("Jobs_Posted")
         val layoutManager = LinearLayoutManager(requireContext())
         binding.finalistMarketplaceRecycler.layoutManager = layoutManager
-        database.reference.child("Jobs_Posted").child(FirebaseAuth.getInstance().uid!!)
+        database.reference.child("Jobs_Posted")
             .addValueEventListener(object  : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     job  = snapshot.getValue(FinalistMarketPlace::class.java)

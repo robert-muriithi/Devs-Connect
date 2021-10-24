@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recruiter.databinding.FinalistHomeRecyclerLayoutBinding
 import com.example.recruiter.model.TopRecruiters
 
-class TopRecruitersRecyclerAdapter : ListAdapter<TopRecruiters, TopRecruitersRecyclerAdapter.MyViewHolder>(myDiffutil) {
+class TopRecruitersRecyclerAdapter (private val onClickListener: OnclickLister) : ListAdapter<TopRecruiters, TopRecruitersRecyclerAdapter.MyViewHolder>(myDiffutil) {
     object myDiffutil : DiffUtil.ItemCallback<TopRecruiters>() {
         override fun areItemsTheSame(oldItem: TopRecruiters, newItem: TopRecruiters): Boolean {
             return oldItem == newItem
@@ -41,5 +41,12 @@ class TopRecruitersRecyclerAdapter : ListAdapter<TopRecruiters, TopRecruitersRec
     ) {
         val items = getItem(position)
         holder.bind(items)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(items)
+        }
+    }
+
+    class OnclickLister(val clickListener: (topRecruiters: TopRecruiters) -> Unit){
+        fun onClick(topRecruiters: TopRecruiters) = clickListener(topRecruiters)
     }
 }
