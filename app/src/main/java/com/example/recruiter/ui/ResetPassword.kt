@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.example.recruiter.databinding.FragmentResetPasswordBinding
 import com.example.recruiter.others.CustomDialog
@@ -25,24 +26,26 @@ class ResetPassword : DialogFragment() {
         val view = binding.root
         auth = FirebaseAuth.getInstance()
 
-        val mail = binding.emailReset.editText?.text.toString().trim()
 
-        binding.resetPasswordBtn.setOnClickListener {
-            if (TextUtils.isEmpty(mail)){
-                binding.emailReset.error = "required"
+
+        binding.dialogConfirm.setOnClickListener {
+            if (TextUtils.isEmpty(binding.userEmil.text.toString().trim())) {
+                binding.progressBar6.isVisible = true
+                binding.userEmil.error = "required"
                 return@setOnClickListener
             }
+            else
+                auth.sendPasswordResetEmail(binding.userEmil.text.toString().trim()).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    binding.progressBar6.isVisible = false
+                    Toast.makeText(requireContext(), "Reset link sent", Toast.LENGTH_SHORT)
+                        .show()
 
-
-            auth.sendPasswordResetEmail(mail).addOnCompleteListener {
-                if (it.isSuccessful){
-
-                    val alert = CustomDialog()
-                    alert.showResetPasswordDialog(activity)
                 }
-                else{
-                    Toast.makeText(requireContext(), "Email does not exist", Toast.LENGTH_SHORT).show()
-                }
+            }.addOnFailureListener {
+                    binding.progressBar6.isVisible = false
+                Toast.makeText(requireContext(), "Invalid email", Toast.LENGTH_SHORT).show()
+
             }
         }
 

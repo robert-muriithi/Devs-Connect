@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
 import com.example.recruiter.others.CustomDialogFragment
+import com.example.recruiter.others.CustomLoading
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -43,7 +44,7 @@ class LoginFragment : Fragment() {
        }
 
         binding.forgotPassword.setOnClickListener {
-            CustomDialogFragment().show(requireActivity().supportFragmentManager,"CustomDialog")
+            ResetPassword().show(requireActivity().supportFragmentManager,"CustomDialog")
         }
 
         binding.loginBtn.setOnClickListener {
@@ -62,17 +63,24 @@ class LoginFragment : Fragment() {
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
-                    databaseReference = FirebaseDatabase.getInstance().getReference("users")
-                    val userType = binding.usertypeSpinner.selectedItem.toString()
-                  //  if (databaseReference.child())
-                    if (userType == "Employer"){
+                    val firebaseUser = auth.currentUser
+                    if(firebaseUser!!.isEmailVerified){
+                        databaseReference = FirebaseDatabase.getInstance().getReference("users")
+                        val userType = binding.usertypeSpinner.selectedItem.toString()
+                        //  if (databaseReference.child())
+                        if (userType == "Employer"){
+                            binding.progressBar.isVisible = false
+                            //Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
+                        }
+                        if (userType == "Developer"){
+                            binding.progressBar.isVisible = false
+                            findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
+                        }
+                    }else
+                    {
                         binding.progressBar.isVisible = false
-                        //Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
-                    }
-                    if (userType == "Developer"){
-                        binding.progressBar.isVisible = false
-                        findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
+                        Toast.makeText(requireContext(), "Verify email first", Toast.LENGTH_SHORT).show()
                     }
 
                 }else{

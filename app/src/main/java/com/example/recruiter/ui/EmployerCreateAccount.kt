@@ -82,6 +82,10 @@ class EmployerCreateAccount : Fragment() {
                 binding.progressBar2.isVisible = true
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                 if (it.isSuccessful){
+                    val firebaseUser = auth.currentUser
+                    firebaseUser?.sendEmailVerification()?.addOnCompleteListener {
+                        Toast.makeText(requireContext(), "Verification link has been sent to you email", Toast.LENGTH_SHORT).show()
+                    }
                     binding.progressBar2.isVisible = false
                     val employer = Employer(fullName,email,phoneNumber,position,compName,compAbout)
                     databaseReference.push().setValue(employer)

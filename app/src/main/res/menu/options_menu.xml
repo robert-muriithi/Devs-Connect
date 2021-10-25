@@ -3,11 +3,11 @@
 
     <item
         android:title="About"
-        android:id="@+id/item1"/>
+        android:id="@+id/about"/>
     <item
         android:title="Help"
-        android:id="@+id/item2"/>
+        android:id="@+id/help"/>
     <item
         android:title="Log out"
-        android:id="@+id/item3"/>
+        android:id="@+id/log_out"/>
 </menu>

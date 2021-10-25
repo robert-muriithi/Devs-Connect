@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recruiter.R
 import com.example.recruiter.adapter.FinalistHomeAdapter
 import com.example.recruiter.databinding.FragmentFinalistHomeBinding
 import com.example.recruiter.model.CompanyInfor
@@ -34,20 +36,18 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
         val layoutManager = LinearLayoutManager(requireContext())
         binding.finalistRecycler.layoutManager = layoutManager
 
+        binding.finMarket1.setOnClickListener {
+            findNavController().navigate(R.id.action_finalistHomeFragment_to_finalistMarketPlaceFragment2)
+        }
+        binding.finChat1.setOnClickListener {
+            findNavController().navigate(R.id.action_finalistHomeFragment_to_chatFragment)
+        }
+        binding.finProf1.setOnClickListener {
+            findNavController().navigate(R.id.action_finalistHomeFragment_to_finalistProfileFragment)
+        }
+
        database = FirebaseDatabase.getInstance()
 
-
-        fetch()
-        fetchProfile()
-
-        return view
-    }
-
-    private fun fetchProfile() {
-
-    }
-
-    private fun fetch() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Company information")
         databaseReference.addValueEventListener(object  : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -77,6 +77,9 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
             }
 
         })
+
+
+        return view
     }
 
 

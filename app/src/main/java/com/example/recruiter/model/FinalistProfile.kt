@@ -6,7 +6,6 @@ data class FinalistProfile(
     val location: String,
     val workExperience: String,
     val email: String,
-    val coverLetter: String,
     val about: String,
     val skills: String
 

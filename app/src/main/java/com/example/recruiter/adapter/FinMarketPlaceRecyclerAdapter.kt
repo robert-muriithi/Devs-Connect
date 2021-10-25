@@ -29,7 +29,7 @@ class FinMarketPlaceRecyclerAdapter (private val onClickListener : OnClickListen
             oldItem: FinalistMarketPlace,
             newItem: FinalistMarketPlace
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.jobTitle == newItem.jobTitle
         }
 
     }

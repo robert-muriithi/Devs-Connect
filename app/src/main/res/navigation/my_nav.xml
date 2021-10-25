@@ -108,12 +108,31 @@
         <action
             android:id="@+id/action_finalistHomeFragment_to_finalistMarketPlaceFragment"
             app:destination="@id/finalistMarketPlaceFragment" />
+        <action
+            android:id="@+id/action_finalistHomeFragment_to_finalistMarketPlaceFragment2"
+            app:destination="@id/finalistMarketPlaceFragment" />
+        <action
+            android:id="@+id/action_finalistHomeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_finalistHomeFragment_to_finalistProfileFragment"
+            app:destination="@id/finalistProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/finalistMarketPlaceFragment"
         android:name="com.example.recruiter.ui.FinalistMarketPlaceFragment"
         android:label="fragment_finalist_market_place"
-        tools:layout="@layout/fragment_finalist_market_place" />
+        tools:layout="@layout/fragment_finalist_market_place" >
+        <action
+            android:id="@+id/action_finalistMarketPlaceFragment_to_finalistHomeFragment"
+            app:destination="@id/finalistHomeFragment" />
+        <action
+            android:id="@+id/action_finalistMarketPlaceFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_finalistMarketPlaceFragment_to_finalistProfileFragment"
+            app:destination="@id/finalistProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/companyInformation"
         android:name="com.example.recruiter.ui.CompanyInformation"
@@ -153,7 +172,29 @@
         android:id="@+id/finalistProfileFragment"
         android:name="com.example.recruiter.ui.FinalistProfileFragment"
         android:label="fragment_finalist_profile"
-        tools:layout="@layout/fragment_finalist_profile" />
+        tools:layout="@layout/fragment_finalist_profile" >
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_finalistHomeFragment"
+            app:destination="@id/finalistHomeFragment" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_finalistMarketPlaceFragment"
+            app:destination="@id/finalistMarketPlaceFragment" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_finalistUpdateProfile"
+            app:destination="@id/finalistUpdateProfile" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_helpFragment2"
+            app:destination="@id/helpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.recruiter.ui.ChatFragment"
@@ -207,6 +248,12 @@
         <action
             android:id="@+id/action_employerProfileFragment_to_empUpdateProfile"
             app:destination="@id/empUpdateProfile" />
+        <action
+            android:id="@+id/action_employerProfileFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_employerProfileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
@@ -221,4 +268,9 @@
         android:id="@+id/viewProfile3"
         android:name="com.example.recruiter.ui.ViewProfile"
         android:label="ViewProfile" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.recruiter.ui.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
 </navigation>

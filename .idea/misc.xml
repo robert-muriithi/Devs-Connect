@@ -51,10 +51,11 @@
         <entry key="app/src/main/res/layout/fragment_employer_profile.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_finalist_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_finalist_home.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_finalist_market_place.xml" value="0.14814814814814814" />
+        <entry key="app/src/main/res/layout/fragment_finalist_market_place.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_finalist_onboarding.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_finalist_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_finalist_update_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_help.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_job_posting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.17604166666666668" />
@@ -66,7 +67,7 @@
         <entry key="app/src/main/res/layout/marketplace2layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/message_row.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.17604166666666668" />
-        <entry key="app/src/main/res/menu/options_menu.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/menu/options_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

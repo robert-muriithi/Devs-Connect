@@ -180,7 +180,7 @@
                     android:background="@drawable/edittext1"
                     android:drawableRight="@drawable/ic_edit"
                     android:hint="Company About"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:padding="15dp"
                     android:textSize="12sp"
                     android:drawableEnd="@drawable/ic_edit" />

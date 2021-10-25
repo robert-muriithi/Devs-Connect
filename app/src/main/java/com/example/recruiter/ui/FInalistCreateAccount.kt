@@ -17,6 +17,10 @@ import com.example.recruiter.model.Finalist
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import android.util.Patterns
+
+
+
 
 class SignInFragment : Fragment() {
 
@@ -76,6 +80,10 @@ class SignInFragment : Fragment() {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
                     Log.d(TAG,"onCreateView: Registration initialized")
+                    val firebaseUser = auth.currentUser
+                    firebaseUser?.sendEmailVerification()?.addOnCompleteListener {
+                        Toast.makeText(requireContext(), "Verification link has been sent to you email", Toast.LENGTH_SHORT).show()
+                    }
                     binding.progressbar.isVisible = false
                     val finalist = Finalist(category, full_name, email, phoneNumber,password)
                     databaseReference.push().setValue(finalist)
@@ -93,7 +101,9 @@ class SignInFragment : Fragment() {
     }
 
 
-
+    private fun isValidMail(target: CharSequence): Boolean {
+        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
+    }
 
 
 }
