@@ -13,12 +13,13 @@
 
 
         <LinearLayout
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
             android:orientation="vertical">
+
             <RelativeLayout
 
                 android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                     android:text="Find your next hire"
                     android:textColor="@color/midnightBlue"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="50dp"
@@ -42,49 +43,50 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:background="@color/midnightBlue"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/layout"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
                     android:orientation="vertical">
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Connect with top talents at ease."
-                        android:textSize="16sp"
                         android:layout_gravity="center"
-                        android:textColor="#ffffff"/>
+                        android:text="Connect with top talents at ease."
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/postJob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:layout_marginBottom="20dp"
                         android:backgroundTint="@color/yellow"
                         android:paddingLeft="30dp"
                         android:paddingRight="30dp"
                         android:text="Post"
-                        android:layout_gravity="end"
                         android:textAllCaps="false"
-                        android:textColor="@color/midnightBlue"/>
+                        android:textColor="@color/midnightBlue" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -108,13 +110,13 @@
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    tools:listitem="@layout/book_marked_contacts_recycler_layout"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="3"
-                    android:layout_marginTop="10dp"
                     android:id="@+id/finalistRecyler1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    tools:listitem="@layout/book_marked_contacts_recycler_layout" />
             </LinearLayout>
 
 

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/active.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/btn_layout.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/chat_bubble.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/edit_text_shadow.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/edittext1.xml" value="0.19114583333333332" />
@@ -15,7 +16,9 @@
         <entry key="app/src/main/res/drawable/ic_google_1_1.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_microsoft.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/layout.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/layout_bg.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/drawable/layout_card.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/login_spinner_bg.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/mail_big.xml" value="0.190625" />
         <entry key="app/src/main/res/drawable/message_blue.xml" value="0.1875" />
@@ -63,6 +66,7 @@
         <entry key="app/src/main/res/layout/fragment_sign_up_category.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/fragment_view_profile.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/layout.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/market_place_recycler_layout.xml" value="0.16" />
         <entry key="app/src/main/res/layout/marketplace2layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/message_row.xml" value="0.17604166666666668" />

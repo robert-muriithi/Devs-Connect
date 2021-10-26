@@ -99,6 +99,9 @@
         <action
             android:id="@+id/action_employerHomeFragment_to_chatFragment2"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_employerHomeFragment_to_chatRoomFragment3"
+            app:destination="@id/chatRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/finalistHomeFragment"
@@ -261,8 +264,8 @@
         android:label="fragment_chat_room"
         tools:layout="@layout/fragment_chat_room" >
         <argument
-            android:name="mechanicDetails"
-            app:argType="com.example.recruiter.model.Mechanic" />
+            android:name="chatDetails"
+            app:argType="com.example.recruiter.model.BookmarkedContacts" />
     </fragment>
     <fragment
         android:id="@+id/viewProfile3"

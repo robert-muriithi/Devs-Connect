@@ -80,16 +80,16 @@ public class AllChatsAdapter extends FirebaseRecyclerAdapter<Chat, AllChatsAdapt
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                final String userName = dataSnapshot.child("name").getValue().toString();
-                holder.setName(userName);
+                /*final String userName = dataSnapshot.child("full_name").getValue().toString();
+                holder.setName(userName);*/
 
 
                 holder.card.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Mechanic mechanic = new Mechanic(userName,"","",list_user_id,"");
+                       /* Mechanic mechanic = new Mechanic(userName,"","",list_user_id,"");
                         NavDirections action = ChatFragmentDirections.actionChatFragmentToChatRoomFragment2(mechanic);
-                        Navigation.findNavController(v).navigate(action);
+                        Navigation.findNavController(v).navigate(action);*/
                     }
                 });
             }

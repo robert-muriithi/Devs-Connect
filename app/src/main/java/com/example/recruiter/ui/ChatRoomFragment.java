@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.recruiter.R;
 import com.example.recruiter.adapter.ChatsRecyclerAdapter;
 import com.example.recruiter.databinding.FragmentChatRoomBinding;
+import com.example.recruiter.model.BookmarkedContacts;
 import com.example.recruiter.model.ChatMessage;
 import com.example.recruiter.model.Mechanic;
 import com.example.recruiter.observers.ButtonObserver;
@@ -55,7 +56,7 @@ public class ChatRoomFragment extends Fragment {
 
     FragmentChatRoomBinding binding;
 
-    Mechanic mechanic;
+    BookmarkedContacts bookmarkedContacts;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,10 +66,12 @@ public class ChatRoomFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        mechanic = ChatRoomFragmentArgs.fromBundle(getArguments()).getMechanicDetails();
+        bookmarkedContacts = ChatRoomFragmentArgs.fromBundle(getArguments()).getChatDetails();
+
+     // mechanic = .fromBundle(getArguments()).getMechanicDetails();
 
         currentUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        otherUserID = mechanic.getUniqueUUID();
+        otherUserID = bookmarkedContacts.getUserID();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -204,24 +207,5 @@ public class ChatRoomFragment extends Fragment {
         adapter.registerAdapterDataObserver(
                 new ScrollToBottomObserver(binding.messageRecyclerView, (ChatsRecyclerAdapter) adapter, manager)
         );
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        //inflater.inflate(R.menu.verify_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (R.id.verify == item.getItemId()) {
-
-
-
-            databaseReference.child("mechanics").child(mechanic.getUniqueUUID()).child("isVerified").setValue("truee");
-            Toast.makeText(requireContext(), "Verify User", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

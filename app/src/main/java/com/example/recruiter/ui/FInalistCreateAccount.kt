@@ -85,7 +85,7 @@ class SignInFragment : Fragment() {
                         Toast.makeText(requireContext(), "Verification link has been sent to you email", Toast.LENGTH_SHORT).show()
                     }
                     binding.progressbar.isVisible = false
-                    val finalist = Finalist(category, full_name, email, phoneNumber,password)
+                    val finalist = Finalist(category, full_name, email, phoneNumber,password, firebaseUser?.uid)
                     databaseReference.push().setValue(finalist)
                     Toast.makeText(requireContext(), "Account Created Succesfully", Toast.LENGTH_SHORT).show()
 

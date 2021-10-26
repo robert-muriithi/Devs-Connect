@@ -25,9 +25,7 @@ class EmployerHomeFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var myList: ArrayList<BookmarkedContacts>
     private val adapter by lazy{
-        BookmarkedContactsRecyclerAdapter(BookmarkedContactsRecyclerAdapter.OnClickListener{
-
-        })
+        BookmarkedContactsRecyclerAdapter()
     }
 
     override fun onCreateView(
@@ -38,6 +36,7 @@ class EmployerHomeFragment : Fragment() {
         binding = FragmentEmployerHomeBinding.inflate(inflater,container,false)
         val view = binding.root
         database = FirebaseDatabase.getInstance()
+
 
 
         binding.marketNavImage.setOnClickListener {

@@ -62,13 +62,13 @@ public class ChatsRecyclerAdapter extends FirebaseRecyclerAdapter<ChatMessage, C
         private void setTextColor(String userName, TextView textView) {
 
             Log.d(TAG, "setTextColor: CurrentUserName"+currentUserName+ " Username"+userName);
-            if (currentUserName.equals(userName)) {
+           /* if (currentUserName.equals(userName)) {
                 textView.setBackgroundResource(R.drawable.message_blue);
                 textView.setTextColor(Color.WHITE);
             } else {
                 textView.setBackgroundResource(R.drawable.message_gray);
                 textView.setTextColor(Color.BLACK);
-            }
+            }*/
         }
     }
 }

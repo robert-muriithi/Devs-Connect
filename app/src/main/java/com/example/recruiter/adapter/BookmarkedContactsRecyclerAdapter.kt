@@ -2,14 +2,16 @@ package com.example.recruiter.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recruiter.databinding.BookMarkedContactsRecyclerLayoutBinding
 import com.example.recruiter.model.BookmarkedContacts
+import com.example.recruiter.ui.EmployerHomeFragmentDirections
 
-class BookmarkedContactsRecyclerAdapter (private val onClickListener : OnClickListener) : ListAdapter<BookmarkedContacts,BookmarkedContactsRecyclerAdapter.MyViewHolder>(myDiffUtil) {
+class BookmarkedContactsRecyclerAdapter () : ListAdapter<BookmarkedContacts,BookmarkedContactsRecyclerAdapter.MyViewHolder>(myDiffUtil) {
     object myDiffUtil: DiffUtil.ItemCallback<BookmarkedContacts>() {
         override fun areItemsTheSame(
             oldItem: BookmarkedContacts,
@@ -46,10 +48,9 @@ class BookmarkedContactsRecyclerAdapter (private val onClickListener : OnClickLi
         val items = getItem(position)
         holder.bind(items)
         holder.itemView.setOnClickListener {
-            onClickListener.onClick(items)
+            val action = EmployerHomeFragmentDirections.actionEmployerHomeFragmentToChatRoomFragment3(items)
+            Navigation.findNavController(it).navigate(action)
         }
     }
-    class  OnClickListener(val clickListener: (bookmarks: BookmarkedContacts) -> Unit){
-        fun onClick(bookmarks: BookmarkedContacts) = clickListener(bookmarks)
-    }
+
 }

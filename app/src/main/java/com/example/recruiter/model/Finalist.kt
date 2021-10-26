@@ -5,5 +5,6 @@ data class Finalist(
     val full_name : String? ="",
     val email: String? ="",
     val phone_number: String = "",
-    val pass: String? = ""
+    val pass: String? = "",
+    val userID : String? = ""
 )
