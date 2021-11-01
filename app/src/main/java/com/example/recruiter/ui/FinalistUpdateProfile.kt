@@ -40,6 +40,7 @@ private var selectedImage: Uri? = null
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
+        firebaseStorage = FirebaseStorage.getInstance()
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Profile Details")
         binding.updateImage.setOnClickListener {
@@ -62,15 +63,16 @@ private var selectedImage: Uri? = null
                             val email: String = binding.updateEmail.text.toString()
                             val abt: String = binding.updateAbout.text.toString()
                             val skills: String = binding.skillsEditText.text.toString()
+                            val speciality :String = binding.spec.text.toString()
                             val uid = firebaseAuth.uid
-                            val profile = FinalistProfile(imageUrl,name, loc, link, email, abt,skills)
+                            val profile = FinalistProfile(imageUrl,name, loc, link, email, abt,skills, speciality)
                             firebaseDatabase.reference.child("Developers Profile Details").child(uid!!)
                                 .setValue(profile).addOnSuccessListener {
                                     Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
-                                    findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
+                                    findNavController().navigate(R.id.action_finalistUpdateProfile_to_finalistProfileFragment)
                                 }.addOnFailureListener {
-                                    findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
-                                    Toast.makeText(requireContext(), "Failed to update", Toast.LENGTH_SHORT).show()
+                                    findNavController().navigate(R.id.action_finalistUpdateProfile_to_finalistProfileFragment)
+                                    Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
                                 }
                         }
                     }
@@ -81,8 +83,9 @@ private var selectedImage: Uri? = null
                         val companyEmail: String = binding.updateEmail.text.toString()
                         val location: String = binding.updateAbout.text.toString()
                         val about: String = binding.skillsEditText.text.toString()
+                        val speciality : String = binding.spec.text.toString()
                         val uid = firebaseAuth.uid
-                        val employerProfile = FinalistProfile("No image", companyName, companyDesc, websiteLink, companyEmail, location, about)
+                        val employerProfile = FinalistProfile("No image", companyName, companyDesc, websiteLink, companyEmail, location, about, speciality)
                         firebaseDatabase.reference.child("Developers Profile Details").child(uid!!).setValue(employerProfile).addOnSuccessListener {
 
                             Toast.makeText(requireContext(), "Updated with no image", Toast.LENGTH_SHORT).show()

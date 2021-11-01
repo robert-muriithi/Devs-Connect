@@ -161,7 +161,11 @@
         android:id="@+id/finalistUpdateProfile"
         android:name="com.example.recruiter.ui.FinalistUpdateProfile"
         android:label="fragment_finalist_update_profile"
-        tools:layout="@layout/fragment_finalist_update_profile" />
+        tools:layout="@layout/fragment_finalist_update_profile" >
+        <action
+            android:id="@+id/action_finalistUpdateProfile_to_finalistProfileFragment"
+            app:destination="@id/finalistProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/empUpdateProfile"
         android:name="com.example.recruiter.ui.EmpUpdateProfile"

@@ -1,31 +1,27 @@
 package com.example.recruiter.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.recruiter.R
+import com.example.recruiter.adapter.FinMarketPlaceRecyclerAdapter
 import com.example.recruiter.databinding.FragmentFinalistMarketPlaceBinding
-import com.example.recruiter.model.BookmarkedContacts
 import com.example.recruiter.model.FinalistMarketPlace
-import com.example.recruiter.model.JobsPost
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.example.recruiter.adapter.FinMarketPlaceRecyclerAdapter as FinMarketPlaceRecyclerAdapter
 
 internal const val TAG = "FinalistMarketPlaceFrag"
 class FinalistMarketPlaceFragment : Fragment() {
 private lateinit var binding: FragmentFinalistMarketPlaceBinding
 private lateinit var database: FirebaseDatabase
 private lateinit var databaseReference: DatabaseReference
+private lateinit var nav: NavController
 var job : FinalistMarketPlace? = null
 private var jobsList = ArrayList<FinalistMarketPlace>()
 private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyclerAdapter(FinMarketPlaceRecyclerAdapter.OnClickListener{
@@ -52,6 +48,10 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
             findNavController().navigate(R.id.action_finalistMarketPlaceFragment_to_finalistProfileFragment)
         }
 
+        nav = findNavController()
+        val appBarConfiguration = AppBarConfiguration(nav.graph)
+        binding.finMarketToolbar.setupWithNavController(nav,appBarConfiguration)
+
 
         databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -77,7 +77,7 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.d(TAG, "onCancelled: Error occoured: ${error.toString()}")
+                Log.d(TAG, "onCancelled: Error occurred: ${error.toString()}")
             }
 
         })

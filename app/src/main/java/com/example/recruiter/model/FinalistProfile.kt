@@ -7,6 +7,7 @@ data class FinalistProfile(
     val workExperience: String,
     val email: String,
     val about: String,
-    val skills: String
+    val skills: String,
+    val speciality: String
 
 )

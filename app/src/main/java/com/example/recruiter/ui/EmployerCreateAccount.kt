@@ -87,9 +87,12 @@ class EmployerCreateAccount : Fragment() {
                         Toast.makeText(requireContext(), "Verification link has been sent to you email", Toast.LENGTH_SHORT).show()
                     }
                     binding.progressBar2.isVisible = false
-                    val employer = Employer(fullName,email,phoneNumber,position,compName,compAbout)
+                    val employer = Employer(category,fullName,email,phoneNumber,position,compName,compAbout,firebaseUser?.uid)
                     databaseReference.push().setValue(employer)
                 }
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
+                binding.progressBar2.isVisible = false
             }
 
         }

@@ -66,6 +66,14 @@ class LoginFragment : Fragment() {
                     val firebaseUser = auth.currentUser
                     if(firebaseUser!!.isEmailVerified){
                         databaseReference = FirebaseDatabase.getInstance().getReference("users")
+                       /* if (databaseReference.orderByChild("category").equals("Developer")){
+                            binding.progressBar.isVisible = false
+                            findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
+                        }
+                        if (databaseReference.orderByChild("category").equals("Employer")){
+                            binding.progressBar.isVisible = false
+                            findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
+                        }*/
                         val userType = binding.usertypeSpinner.selectedItem.toString()
                         //  if (databaseReference.child())
                         if (userType == "Employer"){

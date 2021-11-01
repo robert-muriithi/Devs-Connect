@@ -14,15 +14,26 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentFinalistProfileBinding
+import com.example.recruiter.model.RegisteredFinalist
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 
 class FinalistProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener,
     androidx.appcompat.widget.Toolbar.OnMenuItemClickListener {
 private lateinit var binding: FragmentFinalistProfileBinding
 private lateinit var nav : NavController
+private lateinit var databaseReference: DatabaseReference
+private lateinit var firebaseStorage: FirebaseStorage
+private lateinit var storageReference: StorageReference
+private lateinit var uid: String
+private lateinit var registeredFinalist: RegisteredFinalist
+private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +42,9 @@ private lateinit var nav : NavController
         // Inflate the layout for this fragment
         binding = FragmentFinalistProfileBinding.inflate(layoutInflater, container, false)
         val view = binding.root
+
+        auth = FirebaseAuth.getInstance()
+        uid = auth.currentUser?.uid.toString()
         nav = findNavController()
 
         binding.finHome4.setOnClickListener {
@@ -49,8 +63,31 @@ private lateinit var nav : NavController
         binding.toolbar2.setupWithNavController(nav,appBarConfiguration)
         binding.toolbar2.setOnMenuItemClickListener(this)
 
+        databaseReference = FirebaseDatabase.getInstance().getReference("Developers Profile Details")
+        if (uid.isNotEmpty()){
+            fetchData()
+        }
 
         return view
+    }
+
+    private fun fetchData() {
+        databaseReference.child(uid).addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                registeredFinalist = snapshot.getValue(RegisteredFinalist::class.java)!!
+                binding.profName.text = registeredFinalist.name
+                binding.profSpeciality.text = registeredFinalist.speciality
+                binding.profAbout.text = registeredFinalist.about
+                Glide.with(binding.profImage)
+                    .load(registeredFinalist.imageUrl)
+                    .into(binding.profImage)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

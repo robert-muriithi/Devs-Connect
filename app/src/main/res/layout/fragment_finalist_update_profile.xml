@@ -170,7 +170,7 @@
                         android:background="@drawable/edittext1"
                         android:drawableEnd="@drawable/ic_edit"
                         android:drawableRight="@drawable/ic_edit"
-                        android:hint="Company About"
+                        android:hint="Bio"
                         android:inputType="textEmailAddress"
                         android:padding="15dp"
                         android:textSize="12sp" />
@@ -202,40 +202,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_marginTop="20dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Social"
+                        android:text="Speciality"
                         android:textSize="18sp"/>
-                    <LinearLayout
+
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:id="@+id/githubImage"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/github"/>
-                        <ImageView
-                            android:id="@+id/linkedinImage"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="50dp"
-                            android:src="@drawable/linkedin"
-                            android:layout_marginStart="50dp" />
-                        <ImageView
-                            android:id="@+id/twitterImage"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/twitter"
-                            android:layout_marginStart="50dp"
-                            android:layout_marginLeft="50dp" />
-                    </LinearLayout>
+                        android:hint="Android Developer, Web Developer etc"
+                        android:background="@drawable/edittext1"
+                        android:drawableEnd="@drawable/ic_edit"
+                        android:padding="15dp"
+                        android:textSize="12sp"
+                        android:id="@+id/spec"/>
 
                 </LinearLayout>
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/updateBtn"

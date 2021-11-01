@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.recruiter.R
 import com.example.recruiter.adapter.AllChatsAdapter
 import com.example.recruiter.databinding.FragmentChatBinding
@@ -23,6 +26,7 @@ private lateinit var binding: FragmentChatBinding
     var databaseReference: DatabaseReference? = null
     var firebaseUser: FirebaseUser? = null
     private var currentUserID: String? = null
+    private lateinit var nav: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +35,12 @@ private lateinit var binding: FragmentChatBinding
         // Inflate the layout for this fragment
         binding = FragmentChatBinding.inflate(layoutInflater,container, false)
         val view = binding.root
+
+        nav = findNavController()
+        val appBarConfiguration = AppBarConfiguration(nav.graph)
+        binding.chatToolbar.setupWithNavController(nav,appBarConfiguration)
+
+
         binding.homeNavImage3.setOnClickListener {
             findNavController().navigate(R.id.action_chatFragment_to_employerHomeFragment)
         }
