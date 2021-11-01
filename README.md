@@ -153,3 +153,96 @@ data class RetrievalEvent (
     )
     
 ```
+The properties of this data class is set to the retrieved SMS message.This is done if the background processing was successful. A timeout usually occurs if no message is received within 5 minutes. If it occurs, timeout is set to true. Then, send the event to the listening subscriber.
+
+### Step 5: Register the BroadcastReceiver on AndroidManifest file
+In your app's `AndroidManifest.xml`, register `BroadcastReceiver`.
+
+Next, in our `MainActivity class`, we'll register, unregister, and implement our subscribers. The `onReceiveSms()` method will be invoked when an event is posted. It is usually annotated with the `@Subscribe` annotation.
+Registering and unregistering receiver is usually  done on `onStart()` and `onStop()` methods respectively. The `substringAfterLast()` function is used to extract the code sent through SMS. The code will the be display in our Edit Text.
+
+**Note**: Always remember to register and unregister members to avoid memory leaks
+```
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var smsClient: SmsRetrieverClient
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        smsClient = SmsRetriever.getClient(this)
+
+        //uncomment this to generate your app hash string. You can view the hash string on your log cat when you run the app
+        /*val appSignatureHelper = SignatureHelper(this)
+        Log.d("SIGNATURE",appSignatureHelper.appSignature.toString())*/
+
+        initSmsListener()
+
+    }
+    
+    private fun initSmsListener() {
+        smsClient.startSmsRetriever()
+            .addOnSuccessListener {
+                Toast.makeText(
+                    this, "Waiting for sms message",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }.addOnFailureListener { failure ->
+                Toast.makeText(
+                    this, failure.localizedMessage,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
+    @Subscribe
+    fun onReceiveSms(retrievalEvent: RetrievalEvent) {
+        val code: String =
+            StringUtils.substringAfterLast(retrievalEvent.message, "is").replace(":", "")
+                .trim().substring(0, 4)
+
+        runOnUiThread {
+            if (!retrievalEvent.timedOut) {
+                binding.editText.setText(code)
+            } else {
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+            }
+        }
+        initSmsListener()
+
+    }
+}
+```
+### Computing your app's hash string
+To generate the hash string, you can use the following methods: 
+- Use [Play App Signing](https://support.google.com/googleplay/android-developer/answer/9842756?visit_id=637672247631770776-2285078183&rd=1)
+- Use `SignatureHelper class`. This class will help to generate our app's hash string. After using this class to obtain the hash string, always remove it.
+
+Finally, remember that the format you should use on your message is as follows: 
+- The message should be less than 140 bytes.
+- The message should have the OTP code.
+- Your message should end with you app's 11-character hash string 
+
+The following is an example
+
+```
+Your Sms Retriever Api code is: 6647
+u0tUcRo4UQ7
+```
+
+### Demo Screens
+
+On running the app, this is what to expect:
+
+![Screen One](/automatic-sms-verification-with-the-sms-retriever-api-in-android/screen-one.png)
+
+You can find the whole project on [GitHub](https://github.com/robert-muriithi/SmsRetriverApiDemo.git)
+
+### Conclusions
+
+Automatic Retriever API is a library that helps in detecting and extracting OTP code. This code is usually sent back to the server for verification. This API performs the task without requiring the user to provide permissions for the app. This makes the user's onboarding experience is smooth and nice. 
+
+
+Happy coding!
+
