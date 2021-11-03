@@ -95,6 +95,8 @@ class EmployerHomeFragment : Fragment() {
     }
 
     override fun onPause() {
+
+
         super.onPause()
         val currentId = FirebaseAuth.getInstance().uid
         database!!.reference.child("presence").child(currentId!!).setValue("Offline")
