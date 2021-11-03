@@ -20,6 +20,7 @@ import com.example.recruiter.databinding.FragmentFinalistProfileBinding
 import com.example.recruiter.model.RegisteredFinalist
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -54,7 +55,7 @@ private lateinit var auth: FirebaseAuth
             findNavController().navigate(R.id.action_finalistProfileFragment_to_finalistMarketPlaceFragment)
         }
         binding.finChat4.setOnClickListener {
-            findNavController().navigate(R.id.action_finalistProfileFragment_to_chatFragment)
+            findNavController().navigate(R.id.action_finalistProfileFragment_to_finalistChatFragment)
         }
         binding.materialEditButton.setOnClickListener {
             findNavController().navigate(R.id.action_finalistProfileFragment_to_finalistUpdateProfile)

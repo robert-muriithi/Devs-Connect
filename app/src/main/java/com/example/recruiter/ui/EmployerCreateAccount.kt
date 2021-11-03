@@ -88,7 +88,7 @@ class EmployerCreateAccount : Fragment() {
                     }
                     binding.progressBar2.isVisible = false
                     val employer = Employer(category,fullName,email,phoneNumber,position,compName,compAbout,firebaseUser?.uid)
-                    databaseReference.push().setValue(employer)
+                    databaseReference.child(firebaseUser?.uid!!).setValue(employer)
                 }
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()

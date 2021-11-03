@@ -86,7 +86,7 @@ class SignInFragment : Fragment() {
                     }
                     binding.progressbar.isVisible = false
                     val finalist = Finalist(category, full_name, email, phoneNumber,password, firebaseUser?.uid)
-                    databaseReference.push().setValue(finalist)
+                    databaseReference.child(firebaseUser?.uid!!).setValue(finalist)
                     Toast.makeText(requireContext(), "Account Created Succesfully", Toast.LENGTH_SHORT).show()
 
 

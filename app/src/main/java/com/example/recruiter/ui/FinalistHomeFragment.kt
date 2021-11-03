@@ -40,7 +40,7 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
             findNavController().navigate(R.id.action_finalistHomeFragment_to_finalistMarketPlaceFragment2)
         }
         binding.finChat1.setOnClickListener {
-            findNavController().navigate(R.id.action_finalistHomeFragment_to_chatFragment)
+            findNavController().navigate(R.id.action_finalistHomeFragment_to_finalistChatFragment)
         }
         binding.finProf1.setOnClickListener {
             findNavController().navigate(R.id.action_finalistHomeFragment_to_finalistProfileFragment)

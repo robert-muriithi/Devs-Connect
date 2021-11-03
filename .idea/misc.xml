@@ -52,6 +52,8 @@
         <entry key="app/src/main/res/layout/fragment_employer_marketplace2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_employer_onboarding.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_employer_profile.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/fragment_finalist_chat.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/fragment_finalist_chat_room.xml" value="0.196875" />
         <entry key="app/src/main/res/layout/fragment_finalist_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_finalist_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_finalist_market_place.xml" value="0.18" />

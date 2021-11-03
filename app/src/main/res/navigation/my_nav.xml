@@ -120,6 +120,9 @@
         <action
             android:id="@+id/action_finalistHomeFragment_to_finalistProfileFragment"
             app:destination="@id/finalistProfileFragment" />
+        <action
+            android:id="@+id/action_finalistHomeFragment_to_finalistChatFragment"
+            app:destination="@id/finalistChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/finalistMarketPlaceFragment"
@@ -135,6 +138,9 @@
         <action
             android:id="@+id/action_finalistMarketPlaceFragment_to_finalistProfileFragment"
             app:destination="@id/finalistProfileFragment" />
+        <action
+            android:id="@+id/action_finalistMarketPlaceFragment_to_finalistChatFragment"
+            app:destination="@id/finalistChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/companyInformation"
@@ -201,6 +207,9 @@
         <action
             android:id="@+id/action_finalistProfileFragment_to_helpFragment2"
             app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_finalistProfileFragment_to_finalistChatFragment"
+            app:destination="@id/finalistChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -280,4 +289,19 @@
         android:name="com.example.recruiter.ui.HelpFragment"
         android:label="fragment_help"
         tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/finalistChatFragment"
+        android:name="com.example.recruiter.ui.FinalistChatFragment"
+        android:label="fragment_finalist_chat"
+        tools:layout="@layout/fragment_finalist_chat" >
+        <action
+            android:id="@+id/action_finalistChatFragment_to_finalistHomeFragment"
+            app:destination="@id/finalistHomeFragment" />
+        <action
+            android:id="@+id/action_finalistChatFragment_to_finalistMarketPlaceFragment"
+            app:destination="@id/finalistMarketPlaceFragment" />
+        <action
+            android:id="@+id/action_finalistChatFragment_to_finalistProfileFragment"
+            app:destination="@id/finalistProfileFragment" />
+    </fragment>
 </navigation>

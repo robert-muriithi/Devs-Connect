@@ -42,7 +42,7 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
             findNavController().navigate(R.id.action_finalistMarketPlaceFragment_to_finalistHomeFragment)
         }
         binding.finChat2.setOnClickListener {
-            findNavController().navigate(R.id.action_finalistMarketPlaceFragment_to_chatFragment)
+            findNavController().navigate(R.id.action_finalistMarketPlaceFragment_to_finalistChatFragment)
         }
         binding.finProf2.setOnClickListener {
             findNavController().navigate(R.id.action_finalistMarketPlaceFragment_to_finalistProfileFragment)
