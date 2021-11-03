@@ -24,6 +24,8 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private  lateinit var auth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+    private var category1 = "Employer"
+    private val category2 = "Developer"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -74,14 +76,16 @@ class LoginFragment : Fragment() {
                             binding.progressBar.isVisible = false
                             findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
                         }*/
-                        val userType = binding.usertypeSpinner.selectedItem.toString()
+                       /* val userType = binding.usertypeSpinner.selectedItem.toString()*/
                         //  if (databaseReference.child())
-                        if (userType == "Employer"){
+
+                        val ref = FirebaseDatabase.getInstance().getReference("users").orderByChild("category")
+                        if (ref.equals(category1)){
                             binding.progressBar.isVisible = false
                             //Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
                         }
-                        if (userType == "Developer"){
+                        if (ref.equals(category2)){
                             binding.progressBar.isVisible = false
                             findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
                         }
