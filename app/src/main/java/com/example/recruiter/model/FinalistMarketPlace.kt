@@ -4,7 +4,7 @@ data class FinalistMarketPlace(
 
     val jobTitle: String,
     val jobRole: String,
-    val jobDesc: String
+    val jobDescription: String
 ){
     constructor() : this("","","")
 }

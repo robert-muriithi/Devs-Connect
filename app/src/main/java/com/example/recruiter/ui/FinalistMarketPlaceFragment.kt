@@ -72,7 +72,7 @@ private val adapter: FinMarketPlaceRecyclerAdapter by lazy { FinMarketPlaceRecyc
                 child.forEach {
                     var contacts = FinalistMarketPlace(it.child("jobTitle").value.toString(),
                     it.child("jobRole").value.toString(),
-                        it.child("jobDesc").value.toString())
+                        it.child("jobDescription").value.toString())
                 }
             }
 

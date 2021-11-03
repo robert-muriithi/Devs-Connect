@@ -79,13 +79,15 @@ class LoginFragment : Fragment() {
                        /* val userType = binding.usertypeSpinner.selectedItem.toString()*/
                         //  if (databaseReference.child())
 
-                        val ref = FirebaseDatabase.getInstance().getReference("users").orderByChild("category")
-                        if (ref.equals(category1)){
+                        val userType = binding.usertypeSpinner.selectedItem.toString()
+
+                       // val ref = FirebaseDatabase.getInstance().getReference("users").orderByChild("category")
+                        if (userType == "Employer"){
                             binding.progressBar.isVisible = false
                             //Toast.makeText(requireContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
                         }
-                        if (ref.equals(category2)){
+                        if (userType.equals("Developer")){
                             binding.progressBar.isVisible = false
                             findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
                         }

@@ -13,7 +13,7 @@ class FinMarketPlaceRecyclerAdapter (private val onClickListener : OnClickListen
        fun bind(items: FinalistMarketPlace?) {
            binding.jTitle.text = items?.jobTitle
            binding.jRole.text = items?.jobRole
-           binding.jDescription.text = items?.jobDesc
+           binding.jDescription.text = items?.jobDescription
        }
 
    }
