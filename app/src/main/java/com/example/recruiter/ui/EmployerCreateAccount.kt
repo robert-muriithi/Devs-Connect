@@ -2,6 +2,7 @@ package com.example.recruiter.ui
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentEmployerCreateAccountBinding
 import com.example.recruiter.model.Employer
+import com.example.recruiter.others.CheckInternet
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -35,12 +39,12 @@ class EmployerCreateAccount : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
 
         binding.returnToLogin.setOnClickListener {
-           // findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
+            findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
         }
 
         binding.create.setOnClickListener {
 
-           // findNavController().navigate(R.id.action_employerCreateAccount_to_companyInformation)
+            // findNavController().navigate(R.id.action_employerCreateAccount_to_companyInformation)
             val fullName = binding.employerFullName.editText?.text.toString().trim()
             val email = binding.emailAddress.editText?.text.toString().trim()
             val phoneNumber = binding.EmployerPhonenumber.editText?.text.toString().trim()
@@ -50,44 +54,95 @@ class EmployerCreateAccount : Fragment() {
             val password = binding.employerPassword.editText?.text.toString().trim()
             val confirmPassword = binding.employerConfirmPassword.editText?.text.toString().trim()
 
-            if (TextUtils.isEmpty(fullName)){
-                binding.employerFullName.error = "required"
-                //return@setOnClickListener
-            }else if (TextUtils.isEmpty(email)){
-                binding.emailAddress.error = "required"
-                    //return@setOnClickListener
+            when {
+                TextUtils.isEmpty(fullName) -> {
+                    binding.employerFullName.error = "required"
+                    return@setOnClickListener
                 }
-            else if (TextUtils.isEmpty(phoneNumber)){
-                binding.EmployerPhonenumber.error = "required"
-               // return@setOnClickListener
+                TextUtils.isEmpty(email) -> {
+                    binding.emailAddress.error = "required"
+                    return@setOnClickListener
+                }
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    binding.emailAddress.error = "Invalid email format"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(phoneNumber) -> {
+                    binding.EmployerPhonenumber.error = "required"
+                    return@setOnClickListener
+                }
+                phoneNumber.length < 10 -> {
+                    binding.EmployerPhonenumber.error = "required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(position) -> {
+                    binding.position.error = "required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(compName) -> {
+                    binding.companyName.error = "required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(compAbout) -> {
+                    binding.companyAbout.error = "required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(password) -> {
+                    binding.employerPassword.error = "required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(confirmPassword) -> {
+                    binding.employerConfirmPassword.error = "required"
+                    return@setOnClickListener
+                }
+                !password.equals(confirmPassword) -> {
+                    Toast.makeText(requireContext(), "Password does not match", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                password.length < 8 -> {
+                    binding.employerPassword.error = "Password too short"
+                    return@setOnClickListener
+                }
+                !CheckInternet.isConnected(requireContext()) -> {
+                    Snackbar.make(
+                        requireContext(), view, "Connect to the internet and try again",
+                        BaseTransientBottomBar.LENGTH_LONG
+                    ).show()
+                }
+                else -> {
+                    binding.progressBar2.isVisible = true
+                    binding.employerFullName.isEnabled = false
+                    binding.emailAddress.isEnabled = false
+                    binding.EmployerPhonenumber.isEnabled = false
+                    binding.position.isEnabled = false
+                    binding.companyAbout.isEnabled = false
+                    binding.employerPassword.isEnabled = false
+                    binding.employerConfirmPassword.isEnabled = false
+
+                }
             }
-            else if (TextUtils.isEmpty(position)){
-                binding.position.error = "required"
-            //return@setOnClickListener
-            }else if (TextUtils.isEmpty(compName)){
-                binding.companyName.error = "required"
-            }
-            else if (TextUtils.isEmpty(compAbout)){
-                binding.companyAbout.error = "required"
-            }
-            else if (TextUtils.isEmpty(password)){
-                binding.employerPassword.error = "required"
-            }
-            else if (TextUtils.isEmpty(confirmPassword)){
-                binding.employerConfirmPassword.error = "required"
-            }
-            else if (!password.equals(confirmPassword)){
-                Toast.makeText(requireContext(), "Password does not match", Toast.LENGTH_SHORT).show()
-            }else
-                binding.progressBar2.isVisible = true
-            auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
-                if (it.isSuccessful){
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful) {
                     val firebaseUser = auth.currentUser
                     firebaseUser?.sendEmailVerification()?.addOnCompleteListener {
-                        Toast.makeText(requireContext(), "Verification link has been sent to you email", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_employerCreateAccount_to_loginFragment)
+                        Toast.makeText(
+                            requireContext(),
+                            "Verification link has been sent to you email",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     binding.progressBar2.isVisible = false
-                    val employer = Employer(category,fullName,email,phoneNumber,position,compName,compAbout,firebaseUser?.uid)
+                    val employer = Employer(
+                        category,
+                        fullName,
+                        email,
+                        phoneNumber,
+                        position,
+                        compName,
+                        compAbout,
+                        firebaseUser?.uid
+                    )
                     databaseReference.child(firebaseUser?.uid!!).setValue(employer)
                 }
             }.addOnFailureListener {

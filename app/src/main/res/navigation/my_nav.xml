@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/viewPagerFragment">
 
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -36,7 +36,9 @@
         tools:layout="@layout/fragment_finalist_onboarding" >
         <action
             android:id="@+id/action_finalistOnboarding_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/finalistOnboarding"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/employerOnboarding"
@@ -54,7 +56,9 @@
         tools:layout="@layout/fragment_finalist_create_account" >
         <action
             android:id="@+id/action_signInFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/employerCreateAccount"
@@ -67,6 +71,9 @@
         <action
             android:id="@+id/action_employerCreateAccount_to_companyInformation2"
             app:destination="@id/companyInformation" />
+        <action
+            android:id="@+id/action_employerCreateAccount_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -78,7 +85,9 @@
             app:destination="@id/finalistHomeFragment" />
         <action
             android:id="@+id/action_loginFragment_to_employerHomeFragment"
-            app:destination="@id/employerHomeFragment" />
+            app:destination="@id/employerHomeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_loginFragment_to_signUpCategory"
             app:destination="@id/signUpCategory" />
@@ -98,7 +107,9 @@
             app:destination="@id/employerProfileFragment" />
         <action
             android:id="@+id/action_employerHomeFragment_to_chatFragment2"
-            app:destination="@id/chatFragment" />
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/employerHomeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_employerHomeFragment_to_chatRoomFragment3"
             app:destination="@id/chatRoomFragment" />

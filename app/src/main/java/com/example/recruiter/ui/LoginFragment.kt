@@ -12,9 +12,13 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
+import com.example.recruiter.others.CheckInternet
 import com.example.recruiter.others.CustomDialogFragment
 import com.example.recruiter.others.CustomLoading
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -36,6 +40,7 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
+       // activity?.supportFragmentManager?.popBackStack()
 
         /*val navigationView : BottomNavigationView? = activity?.findViewById(R.id.bottomNavigationView)
         navigationView?.isVisible = false*/
@@ -55,14 +60,23 @@ class LoginFragment : Fragment() {
             val password = binding.loginPassword.editText?.text.toString().trim()
 
             if (TextUtils.isEmpty(email)) {
+                binding.loginEmail.error = "Cannot be empty"
                 return@setOnClickListener
             } else if (TextUtils.isEmpty(password)) {
+                binding.loginPassword.error = "Cannot be empty"
                 return@setOnClickListener
-            } else {
+            } else if (!CheckInternet.isConnected(requireContext())){
+             Snackbar.make(requireContext(),view,"Connect to the internet and try again",LENGTH_LONG).show()
+            }
+
+            else {
                 binding.progressBar.isVisible = true
+                binding.loginEmail.isEnabled = false
+                binding.loginPassword.isEnabled = false
             }
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+
                 if (it.isSuccessful) {
                     val firebaseUser = auth.currentUser
                     if (firebaseUser!!.isEmailVerified) {

@@ -18,8 +18,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import android.util.Patterns
-
-
+import com.example.recruiter.others.CheckInternet
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 
 
 class SignInFragment : Fragment() {
@@ -50,62 +51,105 @@ class SignInFragment : Fragment() {
             val password = binding.finalistPassword.editText?.text.toString().trim()
             val confirm_pass = binding.finalistConfirmPassword.editText?.text.toString().trim()
 
-            if (binding.spinner.count == 0){
-                val errorText = binding.spinner.selectedView as TextView
-                errorText.error = "client required"
-                errorText.requestFocus()
-                return@setOnClickListener
+            when {
+                binding.spinner.count == 0 -> {
+                    val errorText = binding.spinner.selectedView as TextView
+                    errorText.error = "client required"
+                    errorText.requestFocus()
+                    return@setOnClickListener
 
+                }
+                TextUtils.isEmpty(full_name) -> {
+                    binding.finalistFullName.error = "Required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(email) -> {
+                    binding.finalistEmail.error = "Required"
+                    return@setOnClickListener
+                }
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    binding.finalistEmail.error = "Invalid email format"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(phoneNumber) -> {
+                    binding.finalistPhoneNumber.error = "Required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(password) -> {
+                    binding.finalistPassword.error = "Required"
+                    return@setOnClickListener
+                }
+                TextUtils.isEmpty(confirm_pass) -> {
+                    binding.finalistConfirmPassword.error = "Required"
+                    return@setOnClickListener
+                }
+                !(password == confirm_pass) -> {
+                    Toast.makeText(requireContext(), "Password mismatch", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                password.length < 8 -> {
+                    binding.finalistPassword.error = "Password too short"
+                    return@setOnClickListener
+                }
+                phoneNumber.length < 10 -> {
+                    binding.finalistPhoneNumber.error = "Invalid Phone number"
+                    return@setOnClickListener
+                }
+                !CheckInternet.isConnected(requireContext()) -> {
+                    Snackbar.make(
+                        requireContext(), view, "Connect to the internet and try again",
+                        BaseTransientBottomBar.LENGTH_LONG
+                    ).show()
+
+                }
+                else -> {
+                    binding.progressbar.isVisible = true
+                    binding.finalistFullName.isEnabled = false
+                    binding.finalistEmail.isEnabled = false
+                    binding.finalistPhoneNumber.isEnabled = false
+                    binding.finalistPassword.isEnabled = false
+                    binding.finalistConfirmPassword.isEnabled = false
+                }
             }
-            if (TextUtils.isEmpty(full_name)){
-                binding.finalistFullName.error = "Required"
-            }
-            else if (TextUtils.isEmpty(email)){
-                binding.finalistEmail.error = "Required"
-            }
-            else if (TextUtils.isEmpty(phoneNumber)){
-                binding.finalistPhoneNumber.error = "Required"
-            }
-            else if (TextUtils.isEmpty(password)){
-                binding.finalistPassword.error = "Required"
-            }
-            else if (TextUtils.isEmpty(confirm_pass)){
-                binding.finalistConfirmPassword.error = "Required"
-            }
-            else if (!(password == confirm_pass)){
-                Toast.makeText(requireContext(), "Password mismatch", Toast.LENGTH_SHORT).show()
-            }
-            else
-                binding.progressbar.isVisible = true
-                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful){
-                    Log.e(TAG,"onCreateView: Registration initialized")
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.e(TAG, "onCreateView: Registration initialized")
                     val firebaseUser = auth.currentUser
                     firebaseUser?.sendEmailVerification()?.addOnCompleteListener {
-                        Toast.makeText(requireContext(), "Verification link has been sent to you email", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Verification link has been sent to you email",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     binding.progressbar.isVisible = false
-                    val finalist = Finalist(category, full_name, email, phoneNumber,password, firebaseUser?.uid)
+                    val finalist = Finalist(
+                        category,
+                        full_name,
+                        email,
+                        phoneNumber,
+                        password,
+                        firebaseUser?.uid
+                    )
                     databaseReference.child(firebaseUser?.uid!!).setValue(finalist)
-                    Toast.makeText(requireContext(), "Account Created Succesfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Account Created Successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
 
                 }
             }.addOnFailureListener {
-                    Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
-                    binding.progressbar.isVisible = false
-                }/*.addOnFailureListener {
+                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
+                binding.progressbar.isVisible = false
+            }/*.addOnFailureListener {
                 if (it.)
                 }*/
         }
 
 
         return view
-    }
-
-
-    private fun isValidMail(target: CharSequence): Boolean {
-        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
 
 

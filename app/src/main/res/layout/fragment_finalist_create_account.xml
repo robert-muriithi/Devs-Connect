@@ -81,7 +81,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="casual" />
+                android:fontFamily="casual"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +103,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="casual"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:maxLength="10"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -41,6 +41,7 @@ private lateinit var nav : NavController
         binding.updateProf.setOnClickListener {
             findNavController().navigate(R.id.action_employerProfileFragment_to_empUpdateProfile)
         }
+
         val appBarConfiguration = AppBarConfiguration(nav.graph)
         binding.toolbar.setupWithNavController(nav,appBarConfiguration)
 

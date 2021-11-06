@@ -10,10 +10,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.recruiter.R
 import com.example.recruiter.adapter.FinalistHomeAdapter
 import com.example.recruiter.databinding.FragmentFinalistHomeBinding
 import com.example.recruiter.model.CompanyInfor
+import com.example.recruiter.model.RegisteredFinalist
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -21,6 +23,7 @@ class FinalistHomeFragment : Fragment() {
 private lateinit var binding: FragmentFinalistHomeBinding
 private lateinit var database: FirebaseDatabase
 private lateinit var databaseReference: DatabaseReference
+private var registeredFinalist = ArrayList<RegisteredFinalist>()
 private var companyList = ArrayList<CompanyInfor>()
 private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickListener{
     //navigate
@@ -33,6 +36,7 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
         // Inflate the layout for this fragment
         binding = FragmentFinalistHomeBinding.inflate(layoutInflater,container, false)
         val view = binding.root
+
         val layoutManager = LinearLayoutManager(requireContext())
         binding.finalistRecycler.layoutManager = layoutManager
 
@@ -45,6 +49,7 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
         binding.finProf1.setOnClickListener {
             findNavController().navigate(R.id.action_finalistHomeFragment_to_finalistProfileFragment)
         }
+        fetchProfile()
 
        database = FirebaseDatabase.getInstance()
 
@@ -81,6 +86,40 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
 
         return view
     }
+
+    private fun fetchProfile() {
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Developers Profile Details")
+        databaseReference.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                registeredFinalist = ArrayList()
+                if (snapshot.exists()){
+                    for (data in snapshot.children){
+                        val finalist = data.getValue(RegisteredFinalist::class.java)
+                        registeredFinalist.add(finalist!!)
+
+                        binding.profname.text = finalist.name
+                        Glide.with(binding.profileImage)
+                            .load(finalist.imageUrl)
+                            .into(binding.profileImage)
+                        /*registeredFinalist = snapshot.getValue(RegisteredFinalist::class.java)!!
+                       binding.profName.text = registeredFinalist.name
+                       binding.profSpeciality.text = registeredFinalist.speciality
+                       binding.profAbout.text = registeredFinalist.about
+                       Glide.with(binding.profImage)
+                           .load(registeredFinalist.imageUrl)
+                           .into(binding.profImage)*/
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
 
 
 }

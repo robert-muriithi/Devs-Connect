@@ -202,8 +202,8 @@
 
         <ImageView
             android:id="@+id/git"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="32dp"
             android:src="@drawable/github"
             app:layout_constraintStart_toStartOf="parent"
@@ -211,8 +211,8 @@
 
         <ImageView
             android:id="@+id/lnked"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/linkedin"
             app:layout_constraintEnd_toStartOf="@+id/tweet"
             app:layout_constraintStart_toEndOf="@+id/git"
@@ -220,8 +220,8 @@
 
         <ImageView
             android:id="@+id/tweet"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="32dp"
             android:src="@drawable/twitter"
