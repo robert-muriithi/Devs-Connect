@@ -47,10 +47,10 @@ class BookmarkedContactsRecyclerAdapter () : ListAdapter<BookmarkedContacts,Book
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val items = getItem(position)
         holder.bind(items)
-        holder.itemView.setOnClickListener {
+       /* holder.itemView.setOnClickListener {
             val action = EmployerHomeFragmentDirections.actionEmployerHomeFragmentToChatRoomFragment3(items)
             Navigation.findNavController(it).navigate(action)
-        }
+        }*/
     }
 
 }

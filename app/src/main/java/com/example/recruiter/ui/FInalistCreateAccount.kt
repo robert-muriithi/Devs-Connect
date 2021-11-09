@@ -1,5 +1,7 @@
 package com.example.recruiter.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -21,14 +23,21 @@ import android.util.Patterns
 import com.example.recruiter.others.CheckInternet
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentFinalistCreateAccountBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseDatabase : FirebaseDatabase
+    private lateinit var firebaseStorage: FirebaseStorage
     private lateinit var databaseReference: DatabaseReference
     val category = "Developer"
+   // private var selectedImage: Uri? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,14 +46,19 @@ class SignInFragment : Fragment() {
         binding = FragmentFinalistCreateAccountBinding.inflate(inflater, container, false)
         val view = binding.root
         auth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        firebaseStorage = FirebaseStorage.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
+
         binding.return2Login.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_loginFragment)
 
         }
 
+
+
         binding.registerBtn.setOnClickListener {
-            val specialty = binding.spinner.selectedItem.toString().trim()
+           // val specialty = binding.spinner.selectedItem.toString().trim()
             val full_name = binding.finalistFullName.editText?.text.toString().trim()
             val email = binding.finalistEmail.editText?.text.toString().trim()
             val phoneNumber = binding.finalistPhoneNumber.editText?.text.toString().trim()
@@ -124,6 +138,7 @@ class SignInFragment : Fragment() {
                     }
                     binding.progressbar.isVisible = false
                     val finalist = Finalist(
+
                         category,
                         full_name,
                         email,

@@ -23,6 +23,7 @@ class FinalistHomeFragment : Fragment() {
 private lateinit var binding: FragmentFinalistHomeBinding
 private lateinit var database: FirebaseDatabase
 private lateinit var databaseReference: DatabaseReference
+private lateinit var uid: String
 private var registeredFinalist = ArrayList<RegisteredFinalist>()
 private var companyList = ArrayList<CompanyInfor>()
 private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickListener{
@@ -88,38 +89,41 @@ private val adapter by  lazy { FinalistHomeAdapter(FinalistHomeAdapter.OnClickLi
     }
 
     private fun fetchProfile() {
+        uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        if (uid.isNotEmpty()){
+            databaseReference = FirebaseDatabase.getInstance().getReference("Developers Profile Details")
+            databaseReference.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    registeredFinalist = ArrayList()
+                    if (snapshot.exists()){
+                        for (data in snapshot.children){
+                            val finalist = data.getValue(RegisteredFinalist::class.java)
+                            registeredFinalist.add(finalist!!)
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Developers Profile Details")
-        databaseReference.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                registeredFinalist = ArrayList()
-                if (snapshot.exists()){
-                    for (data in snapshot.children){
-                        val finalist = data.getValue(RegisteredFinalist::class.java)
-                        registeredFinalist.add(finalist!!)
-
-                        binding.profname.text = finalist.name
-                        Glide.with(binding.profileImage)
-                            .load(finalist.imageUrl)
-                            .into(binding.profileImage)
-                        /*registeredFinalist = snapshot.getValue(RegisteredFinalist::class.java)!!
-                       binding.profName.text = registeredFinalist.name
-                       binding.profSpeciality.text = registeredFinalist.speciality
-                       binding.profAbout.text = registeredFinalist.about
-                       Glide.with(binding.profImage)
-                           .load(registeredFinalist.imageUrl)
-                           .into(binding.profImage)*/
+                            binding.profname.text = finalist.name
+                            Glide.with(binding.profileImage)
+                                .load(finalist.imageUrl)
+                                .into(binding.profileImage)
+                            /*registeredFinalist = snapshot.getValue(RegisteredFinalist::class.java)!!
+                           binding.profName.text = registeredFinalist.name
+                           binding.profSpeciality.text = registeredFinalist.speciality
+                           binding.profAbout.text = registeredFinalist.about
+                           Glide.with(binding.profImage)
+                               .load(registeredFinalist.imageUrl)
+                               .into(binding.profImage)*/
+                        }
                     }
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
 
-            }
+                }
 
-        })
+            })
+        }
+
+
     }
-
 
 
 }

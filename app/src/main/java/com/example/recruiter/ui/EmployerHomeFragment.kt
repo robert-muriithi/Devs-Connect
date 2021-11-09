@@ -12,8 +12,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.recruiter.R
 import com.example.recruiter.adapter.BookmarkedContactsRecyclerAdapter
+import com.example.recruiter.adapter.RegisteredFinalistAdapter
 import com.example.recruiter.databinding.FragmentEmployerHomeBinding
 import com.example.recruiter.model.BookmarkedContacts
+import com.example.recruiter.model.RegisteredFinalist
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -23,9 +25,9 @@ class EmployerHomeFragment : Fragment() {
     private lateinit var binding: FragmentEmployerHomeBinding
     private lateinit var databaseReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
-    private lateinit var myList: ArrayList<BookmarkedContacts>
+    private lateinit var myList: ArrayList<RegisteredFinalist>
     private val adapter by lazy{
-        BookmarkedContactsRecyclerAdapter()
+        RegisteredFinalistAdapter()
     }
 
     override fun onCreateView(
@@ -54,13 +56,13 @@ class EmployerHomeFragment : Fragment() {
             findNavController().navigate(R.id.action_employerHomeFragment_to_jobPostingFragment)
         }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Bookmarked")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Developers Profile Details")
         databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 myList = ArrayList()
                 if (snapshot.exists()){
                     for (data in snapshot.children){
-                        val contacts = data.getValue(BookmarkedContacts::class.java)
+                        val contacts = data.getValue(RegisteredFinalist::class.java)
                         myList.add(contacts!!)
                     }
                     adapter.submitList(myList)

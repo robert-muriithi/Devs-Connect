@@ -23,6 +23,7 @@ import com.example.recruiter.databinding.FragmentChatRoomBinding;
 import com.example.recruiter.model.BookmarkedContacts;
 import com.example.recruiter.model.ChatMessage;
 import com.example.recruiter.model.Mechanic;
+import com.example.recruiter.model.RegisteredFinalist;
 import com.example.recruiter.observers.ButtonObserver;
 import com.example.recruiter.observers.ScrollToBottomObserver;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -56,7 +57,8 @@ public class ChatRoomFragment extends Fragment {
 
     FragmentChatRoomBinding binding;
 
-    BookmarkedContacts bookmarkedContacts;
+    //BookmarkedContacts bookmarkedContacts;
+    RegisteredFinalist registeredFinalist;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,12 +68,12 @@ public class ChatRoomFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        bookmarkedContacts = ChatRoomFragmentArgs.fromBundle(getArguments()).getChatDetails();
+        registeredFinalist = ChatRoomFragmentArgs.fromBundle(getArguments()).getChatDetails();
 
      // mechanic = .fromBundle(getArguments()).getMechanicDetails();
 
         currentUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        otherUserID = bookmarkedContacts.getUserID();
+        otherUserID = registeredFinalist.getUserID();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -95,9 +97,9 @@ public class ChatRoomFragment extends Fragment {
                                 @Override
                                 public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                     if (databaseError == null) {
-                                        Toast.makeText(getContext(), "Successfully Added chats feature", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Successfully Added chats feature" , Toast.LENGTH_SHORT).show();
                                     } else
-                                        Toast.makeText(getContext(), "Cannot Add chats feature", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Cannot Add chats feature" + databaseError.toString(), Toast.LENGTH_SHORT).show();
                                 }
 
 

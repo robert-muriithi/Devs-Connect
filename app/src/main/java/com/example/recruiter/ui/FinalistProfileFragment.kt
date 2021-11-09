@@ -20,9 +20,6 @@ import com.example.recruiter.databinding.FragmentFinalistProfileBinding
 import com.example.recruiter.model.RegisteredFinalist
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 
 
 class FinalistProfileFragment : Fragment(), Toolbar.OnMenuItemClickListener,

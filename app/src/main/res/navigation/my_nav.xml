@@ -112,7 +112,9 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_employerHomeFragment_to_chatRoomFragment3"
-            app:destination="@id/chatRoomFragment" />
+            app:destination="@id/chatRoomFragment"
+            app:popUpTo="@id/employerHomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/finalistHomeFragment"
@@ -289,7 +291,7 @@
         tools:layout="@layout/fragment_chat_room" >
         <argument
             android:name="chatDetails"
-            app:argType="com.example.recruiter.model.BookmarkedContacts" />
+            app:argType="com.example.recruiter.model.RegisteredFinalist" />
     </fragment>
     <fragment
         android:id="@+id/viewProfile3"

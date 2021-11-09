@@ -1,5 +1,6 @@
 package com.example.recruiter.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
 import com.example.recruiter.others.CheckInternet
@@ -22,6 +24,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+
+
+
 
 
 class LoginFragment : Fragment() {
@@ -84,7 +89,7 @@ class LoginFragment : Fragment() {
                         databaseReference = FirebaseDatabase.getInstance().getReference("users")
                         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
                         val uid: String? = user?.uid
-                        Toast.makeText(requireContext(), "$uid", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(requireContext(), "$uid", Toast.LENGTH_SHORT).show()
 
                         databaseReference.child(uid!!)
                             .addValueEventListener(object : ValueEventListener {
@@ -94,7 +99,10 @@ class LoginFragment : Fragment() {
                                             if (i.key.equals("category")) {
                                                 val type: String = i.value.toString()
                                                 // Toast.makeText(requireContext(), "$type", Toast.LENGTH_SHORT).show()
+
                                                 if (type == "Employer") {
+                                                    /*val sweet = SweetAlertDialog(requireContext(), SweetAlertDialog.PROGRESS_TYPE)
+                                                    sweet.progressHelper.stopSpinning()*/
                                                     findNavController().navigate(R.id.action_loginFragment_to_employerHomeFragment)
                                                 } else {
                                                     findNavController().navigate(R.id.action_loginFragment_to_finalistHomeFragment)
@@ -127,7 +135,10 @@ class LoginFragment : Fragment() {
                             })
 
                     } else {
+                        binding.loginEmail.isEnabled = true
+                        binding.loginPassword.isEnabled = true
                         binding.progressBar.isVisible = false
+
                         Toast.makeText(
                             requireContext(),
                             "Check credentials and try again",

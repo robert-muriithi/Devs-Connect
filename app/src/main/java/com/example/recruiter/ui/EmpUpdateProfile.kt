@@ -47,58 +47,62 @@ class EmpUpdateProfile : Fragment() {
             startActivityForResult(intent, 45)
         }
         binding.updateProfileButton.setOnClickListener {
-            if (selectedImage != null){
-                binding.progressBar5.isVisible = true
-                val reference = firebaseStorage.reference.child("Profiles").child(firebaseAuth.uid!!)
-                reference.putFile(selectedImage!!).addOnCompleteListener { task ->
-                    if (task.isSuccessful){
-                        reference.downloadUrl.addOnSuccessListener { uri ->
-                            val imageUrl = uri.toString()
-                            val companyName: String = binding.companyName.text.toString()
-                            val companyDesc: String = binding.companyDescription.text.toString()
-                            val websiteLink: String = binding.websiteLink.text.toString()
-                            val companyEmail: String = binding.companyEmail.text.toString()
-                            val location: String = binding.location.text.toString()
-                            val about: String = binding.companyAbout.text.toString()
-                            val uid = firebaseAuth.uid
-                            val employerProfile = EmployerProfile(
-                                imageUrl,
-                                companyName,
-                                companyDesc,
-                                websiteLink,
-                                companyEmail,
-                                location,
-                                about
-                            )
-                            firebaseDatabase.reference.child("Company Profile Details").child(uid!!)
-                                .setValue(employerProfile).addOnSuccessListener {
+            when {
+                selectedImage != null -> {
+                    binding.progressBar5.isVisible = true
+                    val reference = firebaseStorage.reference.child("Profiles").child(firebaseAuth.uid!!)
+                    reference.putFile(selectedImage!!).addOnCompleteListener { task ->
+                        when {
+                            task.isSuccessful -> {
+                                reference.downloadUrl.addOnSuccessListener { uri ->
+                                    val imageUrl = uri.toString()
+                                    val companyName: String = binding.companyName.text.toString()
+                                    val companyDesc: String = binding.companyDescription.text.toString()
+                                    val websiteLink: String = binding.websiteLink.text.toString()
+                                    val companyEmail: String = binding.companyEmail.text.toString()
+                                    val location: String = binding.location.text.toString()
+                                    val about: String = binding.companyAbout.text.toString()
+                                    val uid = firebaseAuth.uid
+                                    val employerProfile = EmployerProfile(
+                                        imageUrl,
+                                        companyName,
+                                        companyDesc,
+                                        websiteLink,
+                                        companyEmail,
+                                        location,
+                                        about
+                                    )
+                                    firebaseDatabase.reference.child("Company Profile Details").child(uid!!)
+                                        .setValue(employerProfile).addOnSuccessListener {
+                                            binding.progressBar5.isVisible = false
+                                            Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                                            findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
+                                        }.addOnFailureListener {
+                                            binding.progressBar5.isVisible = false
+                                            findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
+                                            Toast.makeText(requireContext(), "Failed to update", Toast.LENGTH_SHORT).show()
+                                        }
+                                }
+                            }
+                            else -> {
+                                val companyName: String = binding.companyName.text.toString()
+                                val companyDesc: String = binding.companyDescription.text.toString()
+                                val websiteLink: String = binding.websiteLink.text.toString()
+                                val companyEmail: String = binding.companyEmail.text.toString()
+                                val location: String = binding.location.text.toString()
+                                val about: String = binding.companyAbout.text.toString()
+                                val uid = firebaseAuth.uid
+                                val employerProfile = EmployerProfile("No image", companyName,companyDesc, websiteLink, companyEmail, location, about)
+                                firebaseDatabase.reference.child("Profile Details").child(uid!!).setValue(employerProfile).addOnSuccessListener {
                                     binding.progressBar5.isVisible = false
-                                    Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
-                                    findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
+                                    Toast.makeText(requireContext(), "Updated with no image", Toast.LENGTH_SHORT).show()
                                 }.addOnFailureListener {
                                     binding.progressBar5.isVisible = false
-                                    findNavController().navigate(R.id.action_empUpdateProfile_to_employerProfileFragment)
-                                    Toast.makeText(requireContext(), "Failed to update", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
                                 }
-                        }
-                    }
-                    else{
-                        val companyName: String = binding.companyName.text.toString()
-                        val companyDesc: String = binding.companyDescription.text.toString()
-                        val websiteLink: String = binding.websiteLink.text.toString()
-                        val companyEmail: String = binding.companyEmail.text.toString()
-                        val location: String = binding.location.text.toString()
-                        val about: String = binding.companyAbout.text.toString()
-                        val uid = firebaseAuth.uid
-                        val employerProfile = EmployerProfile("No image", companyName,companyDesc, websiteLink, companyEmail, location, about)
-                        firebaseDatabase.reference.child("Profile Details").child(uid!!).setValue(employerProfile).addOnSuccessListener {
-                            binding.progressBar5.isVisible = false
-                            Toast.makeText(requireContext(), "Updated with no image", Toast.LENGTH_SHORT).show()
-                        }.addOnFailureListener {
-                            binding.progressBar5.isVisible = false
-                            Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
-                        }
 
+                            }
+                        }
                     }
                 }
             }
