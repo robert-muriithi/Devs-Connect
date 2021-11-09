@@ -10,19 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.recruiter.R;
 import com.example.recruiter.adapter.ChatsRecyclerAdapter;
-import com.example.recruiter.databinding.FragmentChatRoomBinding;
-import com.example.recruiter.model.BookmarkedContacts;
+import com.example.recruiter.databinding.FragmentFinalistChatRoom3Binding;
 import com.example.recruiter.model.ChatMessage;
-import com.example.recruiter.model.Mechanic;
 import com.example.recruiter.model.RegisteredFinalist;
 import com.example.recruiter.observers.ButtonObserver;
 import com.example.recruiter.observers.ScrollToBottomObserver;
@@ -43,10 +38,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+public class FinalistChatRoom extends Fragment {
 
-public class ChatRoomFragment extends Fragment {
-
-    private static final String TAG = "ChatRoomFragment";
+    private static final String TAG = "FinalistChatRoom";
+    FragmentFinalistChatRoom3Binding binding;
 
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
@@ -56,29 +51,24 @@ public class ChatRoomFragment extends Fragment {
     private String currentUserID;
     private String otherUserID;
 
-    FragmentChatRoomBinding binding;
-
-    //BookmarkedContacts bookmarkedContacts;
     RegisteredFinalist registeredFinalist;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentChatRoomBinding.inflate(inflater, container, false);
+        // Inflate the layout for this fragment
+        binding = FragmentFinalistChatRoom3Binding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-        setHasOptionsMenu(true);
 
         registeredFinalist = ChatRoomFragmentArgs.fromBundle(getArguments()).getChatDetails();
 
-     // mechanic = .fromBundle(getArguments()).getMechanicDetails();
+        // mechanic = .fromBundle(getArguments()).getMechanicDetails();
 
         currentUserID = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         otherUserID = registeredFinalist.getUserID();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
 
         databaseReference.child("chats").child(currentUserID).addValueEventListener(
                 new ValueEventListener() {
@@ -99,12 +89,13 @@ public class ChatRoomFragment extends Fragment {
                                 public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                     if (databaseError == null) {
                                         Log.d(TAG, "Current userID"+currentUserID.toString());
+
                                         Log.d(TAG, "Other userUID"+otherUserID);
                                         Toast.makeText(getContext(), "Successfully Added chats feature" , Toast.LENGTH_SHORT).show();
                                     } else
                                         Log.d(TAG, currentUserID.toString());
-                                        Log.d(TAG, otherUserID);
-                                       // Toast.makeText(getContext(), "Cannot Add chats feature" + databaseError.toString(), Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, otherUserID);
+                                    // Toast.makeText(getContext(), "Cannot Add chats feature" + databaseError.toString(), Toast.LENGTH_SHORT).show();
                                 }
 
 
@@ -122,14 +113,16 @@ public class ChatRoomFragment extends Fragment {
         displayMessages();
 
 
-        binding.sendButton.setOnClickListener(new View.OnClickListener() {
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendMessage();
             }
         });
 
-        binding.messageEditText.addTextChangedListener(new ButtonObserver(binding.sendButton));
+        binding.msgEditText.addTextChangedListener(new ButtonObserver(binding.sendBtn));
+
+
 
         return view;
     }
@@ -151,7 +144,7 @@ public class ChatRoomFragment extends Fragment {
 
         Log.d(TAG, "sendMessage: called");
 
-        if (!TextUtils.isEmpty(binding.messageEditText.getText().toString())) {
+        if (!TextUtils.isEmpty(binding.msgEditText.getText().toString())) {
             String currentUserReference = "messages/" + currentUserID + "/" + otherUserID;
             String otherUserReference = "messages/" + otherUserID + "/" + currentUserID;
 
@@ -163,7 +156,7 @@ public class ChatRoomFragment extends Fragment {
             Log.d(TAG, "sendMessage: created key" + userMessagePushID);
 
             ChatMessage message = new ChatMessage(
-                    binding.messageEditText.getText().toString(),
+                    binding.msgEditText.getText().toString(),
                     firebaseUser.getDisplayName(),
                     new Date().toString()
             );
@@ -182,7 +175,7 @@ public class ChatRoomFragment extends Fragment {
                     } else {
                         Log.d(TAG, "onComplete: Completed" + ref.getKey());
                         Toast.makeText(requireContext(), "Message Sent", Toast.LENGTH_SHORT).show();
-                        binding.messageEditText.setText("");
+                        binding.msgEditText.setText("");
                     }
                 }
             });
@@ -208,11 +201,11 @@ public class ChatRoomFragment extends Fragment {
 
         manager = new LinearLayoutManager(getActivity().getApplicationContext());
         manager.setStackFromEnd(true);
-        binding.messageRecyclerView.setLayoutManager(manager);
-        binding.messageRecyclerView.setAdapter(adapter);
+        binding.msgRecyclerView.setLayoutManager(manager);
+        binding.msgRecyclerView.setAdapter(adapter);
 
         adapter.registerAdapterDataObserver(
-                new ScrollToBottomObserver(binding.messageRecyclerView, (ChatsRecyclerAdapter) adapter, manager)
+                new ScrollToBottomObserver(binding.msgRecyclerView, (ChatsRecyclerAdapter) adapter, manager)
         );
     }
 }

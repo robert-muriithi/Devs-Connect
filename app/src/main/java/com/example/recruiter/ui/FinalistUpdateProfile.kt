@@ -65,7 +65,7 @@ private var selectedImage: Uri? = null
                             val skills: String = binding.skillsEditText.text.toString()
                             val speciality :String = binding.spec.text.toString()
                             val uid = firebaseAuth.uid
-                            val profile = FinalistProfile(imageUrl,name, loc, link, email, abt,skills, speciality)
+                            val profile = FinalistProfile(imageUrl,name, loc, link, email, abt,skills, speciality, uid!!)
                             firebaseDatabase.reference.child("Developers Profile Details").child(uid!!)
                                 .setValue(profile).addOnSuccessListener {
                                     Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
@@ -85,7 +85,7 @@ private var selectedImage: Uri? = null
                         val about: String = binding.skillsEditText.text.toString()
                         val speciality : String = binding.spec.text.toString()
                         val uid = firebaseAuth.uid
-                        val employerProfile = FinalistProfile("No image", companyName, companyDesc, websiteLink, companyEmail, location, about, speciality)
+                        val employerProfile = FinalistProfile("No image", companyName, companyDesc, websiteLink, companyEmail, location, about, speciality, uid!!)
                         firebaseDatabase.reference.child("Developers Profile Details").child(uid!!).setValue(employerProfile).addOnSuccessListener {
 
                             Toast.makeText(requireContext(), "Updated with no image", Toast.LENGTH_SHORT).show()
