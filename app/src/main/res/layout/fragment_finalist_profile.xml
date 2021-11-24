@@ -47,7 +47,7 @@
             android:id="@+id/profImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/image"
+            android:src="@drawable/person_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
@@ -82,8 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@color/midnightBlue"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
             android:text="Edit profile"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -92,7 +92,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profSpeciality"
             app:strokeColor="@color/midnightBlue"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="1dp" />
 
         <TextView
             android:id="@+id/textView28"

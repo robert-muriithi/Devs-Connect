@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.recruiter.R
 import com.example.recruiter.databinding.FragmentLoginBinding
 import com.example.recruiter.others.CheckInternet
@@ -124,11 +123,11 @@ class LoginFragment : Fragment() {
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
-                                    Toast.makeText(
+                                    /*Toast.makeText(
                                         requireContext(),
                                         error.message,
                                         Toast.LENGTH_SHORT
-                                    ).show()
+                                    ).show()*/
                                 }
 
 
