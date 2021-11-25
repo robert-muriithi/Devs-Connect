@@ -36,12 +36,61 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:justificationMode="inter_word"
-        android:text="FAQ \n\n What does the application entail?\n The application acts as a link between employers and developers who are seeking jobs.\n How can the app be set on a different platform?\n \nSamsung \n Go to settings\n Device management>battery>unmonitored app>add apps\n \n Lenovo\n \n Background app management>Deselect the app."
+        android:text="FAQ \n\n What does the application entail?\n\nThe application offers a platform to link between employers and developers who are seeking jobs.\n\nHow can the app be reset on a different platform?\n\nSamsung\nGo to settings\nDevice management>battery>unmonitored app>add apps and click on clear data\n\nLenovo\nBackground app management>Deselect the app."
         android:textColor="@color/midnightBlue"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="For any enquiries or bug reports, you can send the developer an email through: "
+        android:textColor="@color/midnightBlue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terms" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="muriithirobert390@gmail.com"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/text"
+        app:layout_constraintStart_toStartOf="@+id/text"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Or send message to: +254790027948"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/view6"
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
